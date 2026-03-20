@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vértice Consulting — Transformación Tecnológica del Sector Financiero LATAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,800;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy:    #0D2B55;
+    --navy-dk: #071828;
+    --blue:    #1B4F8A;
+    --teal:    #0891B2;
+    --teal-lt: #22D3EE;
+    --white:   #FFFFFF;
+    --off:     #F0F6FF;
+    --gray:    #64748B;
+    --gray-lt: #CBD5E1;
+    --text:    #1E293B;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ─────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(7, 24, 40, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(8, 145, 178, 0.2);
+    transition: padding 0.3s;
+  }
+  nav.scrolled { padding: 0.85rem 3rem; }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 800; font-size: 1.35rem;
+    color: var(--white); letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--teal-lt); }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--gray-lt); text-decoration: none;
+    font-size: 0.85rem; font-weight: 400;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal-lt); }
+
+  .nav-cta {
+    background: var(--teal);
+    color: var(--white) !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 2px;
+    font-weight: 500 !important;
+  }
+  .nav-cta:hover { background: var(--teal-lt); color: var(--navy-dk) !important; }
+
+  /* Mobile menu button */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--white); transition: all 0.3s;
+  }
+
+  /* ── HERO ────────────────────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy-dk);
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(8,145,178,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(27,79,138,0.18) 0%, transparent 60%);
+  }
+
+  .hero-dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(34,211,238,0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, black 20%, transparent 80%);
+  }
+
+  .hero-left {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 4rem 6rem 5rem;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--teal-lt);
+    margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-tag::before {
+    content: ''; display: block; width: 28px; height: 1px; background: var(--teal-lt);
+  }
+
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 800; line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-title em {
+    font-style: italic; font-weight: 300; color: var(--teal-lt);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem; line-height: 1.7;
+    color: rgba(203,213,225,0.8);
+    max-width: 520px; margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--teal); color: var(--white);
+    padding: 0.85rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    border: none; border-radius: 2px;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--teal-lt); color: var(--navy-dk); transform: translateY(-2px); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid rgba(34,211,238,0.4);
+    color: var(--teal-lt);
+    padding: 0.85rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400; font-size: 0.9rem;
+    border-radius: 2px;
+    cursor: pointer; text-decoration: none;
+    background: transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--teal-lt); background: rgba(34,211,238,0.06); }
+
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+    padding: 8rem 4rem 6rem 2rem;
+    opacity: 0; animation: fadeIn 1s 0.6s forwards;
+  }
+
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5px; background: rgba(34,211,238,0.15);
+    border: 1px solid rgba(34,211,238,0.15);
+    border-radius: 4px; overflow: hidden;
+    width: 100%; max-width: 400px;
+  }
+  .hero-stat {
+    background: rgba(13, 43, 85, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 2rem 1.75rem;
+    transition: background 0.25s;
+  }
+  .hero-stat:hover { background: rgba(8,145,178,0.15); }
+  .hero-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 3rem; font-weight: 800;
+    color: var(--teal-lt); line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+  .hero-stat-label {
+    font-size: 0.78rem; font-weight: 400;
+    color: rgba(203,213,225,0.7);
+    letter-spacing: 0.04em; line-height: 1.4;
+  }
+
+  /* ── LATAM STRIP ─────────────────────────────────────── */
+  .latam-strip {
+    background: var(--teal);
+    padding: 0.85rem 3rem;
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--navy-dk); overflow: hidden;
+  }
+  .latam-countries {
+    display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;
+  }
+  .latam-countries span { opacity: 0.8; }
+  .latam-countries span:hover { opacity: 1; }
+
+  /* ── SECTION BASE ────────────────────────────────────── */
+  section { padding: 6rem 5rem; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 24px; height: 1px; background: var(--teal);
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800; line-height: 1.1;
+    color: var(--navy); margin-bottom: 1.25rem;
+  }
+  .section-title em { font-style: italic; font-weight: 300; color: var(--teal); }
+  .section-sub {
+    font-size: 1rem; line-height: 1.75;
+    color: var(--gray); max-width: 560px;
+  }
+
+  /* ── NOSOTROS ────────────────────────────────────────── */
+  #nosotros {
+    background: var(--off);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: center;
+  }
+
+  .nosotros-visual { position: relative; }
+  .nosotros-card {
+    background: var(--navy);
+    border-radius: 4px; padding: 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .nosotros-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-lt));
+  }
+
+  .nosotros-pillars {
+    display: flex; flex-direction: column; gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  .pillar {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1rem;
+    border-left: 2px solid rgba(34,211,238,0.3);
+    background: rgba(255,255,255,0.03);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .pillar:hover { border-color: var(--teal-lt); background: rgba(255,255,255,0.06); }
+  .pillar-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem; font-weight: 800;
+    color: var(--teal-lt); opacity: 0.4;
+    flex-shrink: 0; line-height: 1;
+  }
+  .pillar-title {
+    font-size: 0.9rem; font-weight: 500;
+    color: var(--white); margin-bottom: 0.25rem;
+  }
+  .pillar-desc { font-size: 0.8rem; color: rgba(203,213,225,0.6); line-height: 1.5; }
+
+  .nosotros-text { }
+  .nosotros-quote {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem; font-weight: 300; font-style: italic;
+    line-height: 1.5; color: var(--navy);
+    border-left: 3px solid var(--teal);
+    padding-left: 1.5rem; margin: 2rem 0;
+  }
+
+  /* ── TRAYECTORIA (NEW) ─────────────────────────────── */
+  #trayectoria {
+    background: var(--white);
+    position: relative; overflow: hidden;
+  }
+
+  .trayectoria-header { margin-bottom: 3.5rem; }
+
+  .timeline {
+    position: relative;
+    max-width: 1000px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--teal), rgba(8,145,178,0.1));
+  }
+
+  .timeline-block {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 2.5rem;
+  }
+  .timeline-block:last-child { margin-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute; left: -5px; top: 0.35rem;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 3px rgba(8,145,178,0.2);
+  }
+  .timeline-block:first-child .timeline-dot {
+    background: var(--teal-lt);
+    box-shadow: 0 0 0 3px rgba(34,211,238,0.3), 0 0 12px rgba(34,211,238,0.2);
+  }
+
+  .timeline-period {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.35rem;
+  }
+  .timeline-role {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 0.15rem;
+  }
+  .timeline-company {
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--gray); margin-bottom: 0.6rem;
+  }
+
+  .timeline-highlights {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .timeline-chip {
+    font-size: 0.68rem; font-weight: 400;
+    padding: 0.25rem 0.65rem;
+    background: var(--off);
+    border: 1px solid rgba(8,145,178,0.15);
+    border-radius: 2px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  /* ── SERVICIOS ───────────────────────────────────────── */
+  #servicios {
+    background: var(--navy-dk);
+    position: relative; overflow: hidden;
+  }
+  #servicios .section-title { color: var(--white); }
+  #servicios .section-sub { color: rgba(203,213,225,0.7); }
+
+  #servicios::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(8,145,178,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .services-header { margin-bottom: 4rem; }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(34,211,238,0.08);
+    border: 1px solid rgba(34,211,238,0.08);
+    border-radius: 4px; overflow: hidden;
+  }
+
+  .service-card {
+    background: rgba(7,24,40,0.8);
+    padding: 2.25rem;
+    position: relative;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .service-card:hover { background: rgba(8,145,178,0.1); }
+  .service-card:hover .service-num { opacity: 1; }
+  .service-card:hover .service-arrow { opacity: 1; transform: translateX(0); }
+
+  .service-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem; font-weight: 800;
+    color: var(--teal-lt); opacity: 0.15;
+    line-height: 1; margin-bottom: 1.25rem;
+    transition: opacity 0.3s;
+  }
+
+  .service-title {
+    font-size: 1rem; font-weight: 500;
+    color: var(--white); margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .service-desc {
+    font-size: 0.83rem; line-height: 1.65;
+    color: rgba(203,213,225,0.55);
+    margin-bottom: 1.25rem;
+  }
+
+  .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .service-tag {
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(34,211,238,0.2);
+    color: rgba(34,211,238,0.6);
+    border-radius: 2px;
+  }
+
+  .service-arrow {
+    position: absolute; bottom: 1.5rem; right: 1.5rem;
+    color: var(--teal-lt); font-size: 1rem;
+    opacity: 0; transform: translateX(-6px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  /* ── CREDENCIALES (NEW) ────────────────────────────── */
+  #credenciales {
+    background: var(--off);
+    position: relative;
+  }
+
+  .cred-header { margin-bottom: 3.5rem; }
+
+  .cred-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .cred-column-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--teal);
+    display: inline-block;
+  }
+
+  .cred-list {
+    list-style: none; display: flex;
+    flex-direction: column; gap: 0.85rem;
+  }
+  .cred-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-size: 0.88rem; color: var(--text);
+    line-height: 1.5;
+  }
+  .cred-icon {
+    flex-shrink: 0; width: 28px; height: 28px;
+    background: var(--navy);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; color: var(--teal-lt);
+    font-weight: 600; margin-top: 1px;
+  }
+
+  .industries-wrap {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .industry-chip {
+    font-size: 0.78rem; font-weight: 400;
+    padding: 0.45rem 1rem;
+    background: var(--white);
+    border: 1px solid rgba(8,145,178,0.2);
+    border-radius: 2px;
+    color: var(--navy);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .industry-chip:hover {
+    border-color: var(--teal);
+    background: rgba(8,145,178,0.05);
+  }
+
+  /* ── CONTACTO ────────────────────────────────────────── */
+  #contacto {
+    background: var(--white);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+  }
+
+  .contact-items { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.25rem;
+    background: var(--off);
+    border: 1px solid rgba(8,145,178,0.12);
+    border-radius: 3px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .contact-item:hover { border-color: var(--teal); transform: translateX(4px); }
+  .contact-icon {
+    width: 38px; height: 38px; flex-shrink: 0;
+    background: var(--navy);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .contact-item-label {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 0.2rem;
+  }
+  .contact-item-val {
+    font-size: 0.9rem; color: var(--navy); font-weight: 400;
+  }
+  .contact-item-val a {
+    color: var(--navy); text-decoration: none;
+    border-bottom: 1px solid rgba(8,145,178,0.3);
+    transition: border-color 0.2s;
+  }
+  .contact-item-val a:hover { border-color: var(--teal); }
+
+  /* Form */
+  .contact-form {
+    background: var(--off);
+    border: 1px solid rgba(8,145,178,0.12);
+    border-radius: 4px; padding: 2.5rem;
+  }
+  .form-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 1.75rem;
+  }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 0.45rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(8,145,178,0.2);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 300;
+    color: var(--text); background: var(--white);
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--teal); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-submit {
+    width: 100%; padding: 0.9rem;
+    background: var(--teal); color: var(--white);
+    border: none; border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.05em; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .form-submit:hover { background: var(--navy); transform: translateY(-2px); }
+  .form-submit:disabled {
+    opacity: 0.6; cursor: not-allowed; transform: none;
+  }
+
+  .form-status {
+    margin-top: 1rem; padding: 1rem 1.25rem;
+    border-radius: 3px; font-size: 0.88rem;
+    line-height: 1.5; display: none;
+  }
+  .form-status.success {
+    display: block;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #065f46;
+  }
+  .form-status.error {
+    display: block;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #991b1b;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: var(--navy-dk);
+    padding: 3rem 5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(34,211,238,0.1);
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 800; font-size: 1.1rem;
+    color: var(--white); letter-spacing: 0.08em;
+  }
+  .footer-logo span { color: var(--teal-lt); }
+  .footer-tagline {
+    font-size: 0.75rem; color: rgba(203,213,225,0.4);
+    margin-top: 0.25rem;
+  }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-size: 0.78rem; color: rgba(203,213,225,0.5);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--teal-lt); }
+  .footer-copy {
+    font-size: 0.72rem; color: rgba(203,213,225,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ──────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    section { padding: 4rem 1.75rem; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 7rem 1.75rem 4rem; }
+    #nosotros { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    #contacto { grid-template-columns: 1fr; gap: 3rem; }
+    .cred-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .timeline::before { left: 0; }
+    footer { flex-direction: column; padding: 2rem 1.75rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .latam-strip { padding: 0.85rem 1.5rem; }
+    .latam-countries { gap: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">VÉRTICE <span>·</span> CONSULTING</a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#trayectoria">Trayectoria</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#credenciales">Credenciales</a></li>
+    <li><a href="#contacto" class="nav-cta">Hablemos →</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">Consultoría Tecnológica · Sector Financiero LATAM</div>
+    <h1 class="hero-title">
+      Transformación<br/>
+      <em>real.</em> Desde la<br/>
+      estrategia hasta<br/>
+      la ejecución.
+    </h1>
+    <p class="hero-sub">
+      Acompañamos a aseguradoras, bancos y bancaseguros en LATAM en sus procesos de
+      transformación digital, implementación de Core de Seguros, plataformas de distribución
+      y gobierno de proyectos. Sin atajos, sin generalistas.
+    </p>
+    <div class="hero-actions">
+      <a href="#servicios" class="btn-primary">Ver servicios →</a>
+      <a href="#contacto" class="btn-outline">Hablemos</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">20+</div>
+        <div class="hero-stat-label">Años de experiencia en tecnología y consultoría</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">8</div>
+        <div class="hero-stat-label">Países en la región LATAM</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">15+</div>
+        <div class="hero-stat-label">Proyectos de Core de Seguros y plataformas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Independencia de vendors</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LATAM STRIP -->
+<div class="latam-strip">
+  <span style="font-weight:600;opacity:1;margin-right:0.5rem;">Presencia en:</span>
+  <div class="latam-countries">
+    <span>🇦🇷 Argentina</span>
+    <span>🇧🇷 Brasil</span>
+    <span>🇨🇱 Chile</span>
+    <span>🇨🇴 Colombia</span>
+    <span>🇵🇦 Panamá</span>
+    <span>🇵🇪 Perú</span>
+    <span>🇺🇾 Uruguay</span>
+    <span>🇸🇻 El Salvador</span>
+  </div>
+</div>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="nosotros-visual reveal">
+    <div class="nosotros-card">
+      <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal-lt);margin-bottom:0.5rem;">Nuestra propuesta de valor</div>
+      <div class="nosotros-pillars">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div>
+            <div class="pillar-title">Especialización vertical</div>
+            <div class="pillar-desc">Foco en seguros, banca, bancaseguros y sector financiero. No somos generalistas.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div>
+            <div class="pillar-title">Visión end-to-end</div>
+            <div class="pillar-desc">Estrategia, selección (RFI/RFP/POC), GAP Analysis, implementación y gobierno de proyectos.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div>
+            <div class="pillar-title">Independencia de vendors</div>
+            <div class="pillar-desc">Sin contratos con fabricantes de software. Recomendamos lo mejor para cada cliente.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">04</div>
+          <div>
+            <div class="pillar-title">Red y cultura LATAM</div>
+            <div class="pillar-desc">Experiencia real en 8 países. Equipos multiculturales, entendemos cada mercado de adentro.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nosotros-text">
+    <div class="section-label reveal">Quiénes somos</div>
+    <h2 class="section-title reveal reveal-delay-1">Consultoría <em>boutique</em>,<br/>conocimiento profundo.</h2>
+    <blockquote class="nosotros-quote reveal reveal-delay-2">
+      "Combinamos visión estratégica con ejecución práctica y conocimiento real de la industria aseguradora y financiera en LATAM."
+    </blockquote>
+    <p class="section-sub reveal reveal-delay-3">
+      Vértice Consulting nació de más de 20 años de experiencia liderando proyectos de transformación
+      tecnológica en firmas como EY, Deloitte y en consultoría independiente (Kopernicus Tech),
+      con proyectos en aseguradoras, bancaseguros, banca y organismos financieros en toda la región.
+      Ingeniero en Informática con sólida capacidad de gestión y profundo conocimiento del negocio asegurador.
+    </p>
+    <div style="margin-top:2rem;" class="reveal reveal-delay-4">
+      <a href="#trayectoria" class="btn-primary">Ver trayectoria →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRAYECTORIA -->
+<section id="trayectoria">
+  <div class="trayectoria-header">
+    <div class="section-label reveal">Trayectoria</div>
+    <h2 class="section-title reveal reveal-delay-1">Experiencia que <em>respalda</em><br/>cada recomendación.</h2>
+    <p class="section-sub reveal reveal-delay-2">
+      Más de dos décadas liderando proyectos de alta complejidad en el sector financiero de LATAM,
+      desde la estrategia hasta la ejecución en terreno.
+    </p>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-block reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">May 2020 – Oct 2025 · 5 años y 5 meses</div>
+      <div class="timeline-role">Gerente de Consultoría</div>
+      <div class="timeline-company">Kopernicus Tech · LATAM (Chile, Panamá, Perú, Colombia, Brasil, El Salvador, Uruguay)</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">GAP Analysis Core Seguros – Perú (con Globant)</span>
+        <span class="timeline-chip">Plataforma distribución Bancaseguros – Panamá (300 ejecutivos, 37 sucursales)</span>
+        <span class="timeline-chip">OdT 24 meses – Panamá (Core, canales digitales, migración de cartera)</span>
+        <span class="timeline-chip">Soporte y mantenimiento Core – Uruguay</span>
+        <span class="timeline-chip">PMO implementación Core – Uruguay</span>
+        <span class="timeline-chip">Transformación Digital LATAM (5 países)</span>
+        <span class="timeline-chip">Selección implementador Core – El Salvador</span>
+        <span class="timeline-chip">RFP Move to Cloud – Chile</span>
+        <span class="timeline-chip">RFP Software Actuarial – Chile</span>
+        <span class="timeline-chip">Estrategia Tecnológica – Chile</span>
+        <span class="timeline-chip">RFP + POC Core Seguros – Chile (4 oferentes)</span>
+        <span class="timeline-chip">RFI Core Seguros – Chile (20 oferentes evaluados)</span>
+      </div>
+    </div>
+
+    <div class="timeline-block reveal reveal-delay-1">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Abr 2018 – Mar 2020 · 1 año y 11 meses</div>
+      <div class="timeline-role">Gerente – Financial Services Organization (FSO)</div>
+      <div class="timeline-company">EY Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">PMO Programa Transformación Canales WSB – Banco (18 meses)</span>
+        <span class="timeline-chip">Gestión equipo RPA 12-15 devs – Banco</span>
+        <span class="timeline-chip">CNCB Assessment IFRS 9/17 – Banco</span>
+      </div>
+    </div>
+
+    <div class="timeline-block reveal reveal-delay-2">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Abr 2016 – Abr 2018 · 2 años</div>
+      <div class="timeline-role">Gerente – Technology Strategy & Architecture (TSA)</div>
+      <div class="timeline-company">Deloitte Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Cambio Core Seguros Bancaseguros – Diseño (equipo 18 personas)</span>
+        <span class="timeline-chip">GAP Analysis Core Seguros – Bancaseguros (equipo 10 personas)</span>
+        <span class="timeline-chip">Gestión de cuenta TELCO regional</span>
+        <span class="timeline-chip">PDP consolidación ITSM/ITIL</span>
+      </div>
+    </div>
+
+    <div class="timeline-block reveal reveal-delay-2">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Sep 2015 – Mar 2016 · 7 meses</div>
+      <div class="timeline-role">Consultor Senior – TSA</div>
+      <div class="timeline-company">Deloitte Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Selección plataforma Core Seguros (RFI, RFP, demos) – JV Bancaseguros</span>
+      </div>
+    </div>
+
+    <div class="timeline-block reveal reveal-delay-3">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2000 – 2015</div>
+      <div class="timeline-role">Roles técnicos y de liderazgo TI</div>
+      <div class="timeline-company">Megatech Argentina · Xelere · Hewlett-Packard · Universidad de Palermo</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Implementación ITSM/ITIL en banca</span>
+        <span class="timeline-chip">Consultoría HP Service Manager</span>
+        <span class="timeline-chip">Infraestructura y monitoreo enterprise</span>
+        <span class="timeline-chip">Docencia universitaria (PL/SQL, C)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="services-header">
+    <div class="section-label reveal" style="color:var(--teal-lt);">
+      <span style="background:var(--teal-lt);"></span>Lo que hacemos
+    </div>
+    <h2 class="section-title reveal reveal-delay-1">Nuestros <em>servicios</em></h2>
+    <p class="section-sub reveal reveal-delay-2">
+      Seis líneas de servicio diseñadas para acompañar a tu organización en cada etapa de la transformación tecnológica.
+    </p>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-title">Estrategia Tecnológica</div>
+      <div class="service-desc">
+        Definimos el rumbo tecnológico de tu organización. Plan estratégico TI alineado al negocio,
+        roadmaps priorizados, modelos de gobierno y estrategias cloud.
+      </div>
+      <div class="service-tags">
+        <span class="service-tag">Plan TI</span>
+        <span class="service-tag">Cloud</span>
+        <span class="service-tag">Gobierno</span>
+        <span class="service-tag">Roadmap</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">02</div>
+      <div class="service-title">Transformación Digital</div>
+      <div class="service-desc">
+        Diagnóstico de madurez digital, hoja de ruta estratégica y acompañamiento en ejecución
+        para aseguradoras y bancaseguros en LATAM. Gestión del cambio y adopción.
+      </div>
+      <div class="service-tags">
+        <span class="service-tag">Diagnóstico</span>
+        <span class="service-tag">Roadmap</span>
+        <span class="service-tag">Ejecución</span>
+        <span class="service-tag">Cambio</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">03</div>
+      <div class="service-title">Selección de Plataformas</div>
+      <div class="service-desc">
+        Procesos estructurados de selección de software — RFI, RFP, POC y Demos —
+        para Core de Seguros, software actuarial y plataformas digitales, con evaluación objetiva e independiente.
+      </div>
+      <div class="service-tags">
+        <span class="service-tag">RFI</span>
+        <span class="service-tag">RFP</span>
+        <span class="service-tag">POC</span>
+        <span class="service-tag">Demos</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">04</div>
+      <div class="service-title">Implementación de Plataformas</div>
+      <div class="service-desc">
+        Gestión de proyectos de implementación de Core de Seguros y plataformas de distribución
+        para Bancaseguros. Desde el GAP Analysis y diseño funcional hasta el go-live y migración de cartera.
+      </div>
+      <div class="service-tags">
+        <span class="service-tag">GAP Analysis</span>
+        <span class="service-tag">Go-live</span>
+        <span class="service-tag">Migración</span>
+        <span class="service-tag">Bancaseguros</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">05</div>
+      <div class="service-title">PMO & Oficina de Transformación</div>
+      <div class="service-desc">
+        Instalación y operación de PMOs y OdTs. Metodologías, estándares de gobierno,
+        control de portafolio y reporting ejecutivo a directorio para programas de cambio complejos.
+      </div>
+      <div class="service-tags">
+        <span class="service-tag">PMO</span>
+        <span class="service-tag">OdT</span>
+        <span class="service-tag">Portafolio</span>
+        <span class="service-tag">Reporting</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-num">06</div>
+      <div class="service-title">Capacitación & Formación</div>
+      <div class="service-desc">
+        Cursos y talleres en gestión de proyectos, ITIL v4, metodologías ágiles,
+        transformación digital e industria aseguradora. Habilitados para franquicia SENCE en Chile.
+      </div>
+      <div class="service-tags">
+        <span class="service-tag">ITIL v4</span>
+        <span class="service-tag">Scrum</span>
+        <span class="service-tag">SENCE</span>
+        <span class="service-tag">PMBOK</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CREDENCIALES -->
+<section id="credenciales">
+  <div class="cred-header">
+    <div class="section-label reveal">Credenciales</div>
+    <h2 class="section-title reveal reveal-delay-1">Formación y <em>certificaciones</em></h2>
+    <p class="section-sub reveal reveal-delay-2">
+      Respaldo académico y profesional que complementa la experiencia en terreno.
+    </p>
+  </div>
+
+  <div class="cred-grid">
+
+    <div class="reveal reveal-delay-2">
+      <div class="cred-column-title">Formación Académica</div>
+      <ul class="cred-list">
+        <li class="cred-item">
+          <div class="cred-icon">🎓</div>
+          <div><strong>Ingeniero en Informática</strong> — Universidad de Palermo, Buenos Aires</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">🎓</div>
+          <div><strong>Analista Universitario en Sistemas</strong> — Universidad de Palermo, Buenos Aires</div>
+        </li>
+      </ul>
+
+      <div class="cred-column-title" style="margin-top: 2.5rem;">Certificaciones</div>
+      <ul class="cred-list">
+        <li class="cred-item">
+          <div class="cred-icon">✓</div>
+          <div>Scrum Foundation Professional Certificate — CertiProf</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">✓</div>
+          <div>Fundamentos ITIL V3 — EXIN</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">✓</div>
+          <div>HP AIS - Service Manager v9 — HP ExpertONE</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">✓</div>
+          <div>Seguros Generales y Vida — Escuela de Seguros Chile</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">✓</div>
+          <div>PMBOK (IEEE Std 1490-2003) — Universidad de Palermo</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="reveal reveal-delay-3">
+      <div class="cred-column-title">Industrias</div>
+      <div class="industries-wrap">
+        <span class="industry-chip">🛡️ Seguros</span>
+        <span class="industry-chip">🏦 Banca</span>
+        <span class="industry-chip">🤝 Bancaseguros</span>
+        <span class="industry-chip">💻 Tecnología / IT</span>
+        <span class="industry-chip">📡 Telecomunicaciones</span>
+        <span class="industry-chip">⛽ Oil & Gas</span>
+      </div>
+
+      <div class="cred-column-title" style="margin-top: 2.5rem;">Competencias Clave</div>
+      <div class="industries-wrap">
+        <span class="industry-chip">OdT / PMO</span>
+        <span class="industry-chip">Gobierno de Proyectos</span>
+        <span class="industry-chip">Transformación Digital</span>
+        <span class="industry-chip">Estrategia Tecnológica</span>
+        <span class="industry-chip">Core de Seguros</span>
+        <span class="industry-chip">Plataformas de Distribución</span>
+        <span class="industry-chip">RFI / RFP / POC</span>
+        <span class="industry-chip">RPA / Automatización</span>
+        <span class="industry-chip">ITSM / ITIL v4</span>
+        <span class="industry-chip">Scrum / Ágiles</span>
+        <span class="industry-chip">Equipos multiculturales</span>
+      </div>
+
+      <div class="cred-column-title" style="margin-top: 2.5rem;">Idiomas</div>
+      <ul class="cred-list">
+        <li class="cred-item">
+          <div class="cred-icon">🌎</div>
+          <div><strong>Castellano:</strong> Nativo &nbsp;·&nbsp; <strong>Inglés:</strong> Avanzado (Upper Intermediate)</div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contact-info">
+    <div class="section-label reveal">Contacto</div>
+    <h2 class="section-title reveal reveal-delay-1">¿Listo para <em>transformar</em><br/>tu organización?</h2>
+    <p class="section-sub reveal reveal-delay-2">
+      Contanos el desafío que estás enfrentando. Te respondemos en menos de 24 horas
+      con una perspectiva inicial sin costo.
+    </p>
+
+    <div class="contact-items">
+      <div class="contact-item reveal reveal-delay-2">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-val"><a href="mailto:fespil@gmail.com">fespil@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-3">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-item-label">Teléfono / WhatsApp</div>
+          <div class="contact-item-val"><a href="https://wa.me/56968344060">+56 9 6834-4060</a></div>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-4">
+        <div class="contact-icon">💼</div>
+        <div>
+          <div class="contact-item-label">LinkedIn</div>
+          <div class="contact-item-val"><a href="https://www.linkedin.com/in/federicoespil/" target="_blank">linkedin.com/in/federicoespil</a></div>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-5">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-item-label">Ubicación</div>
+          <div class="contact-item-val">Santiago, Chile · Operamos en toda LATAM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form-wrap reveal reveal-delay-2">
+    <div class="contact-form">
+      <div class="form-title">Hablemos.</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="f-nombre">Nombre</label>
+          <input type="text" id="f-nombre" placeholder="Tu nombre" required/>
+        </div>
+        <div class="form-group">
+          <label for="f-empresa">Empresa</label>
+          <input type="text" id="f-empresa" placeholder="Tu empresa"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="f-email">Email</label>
+        <input type="email" id="f-email" placeholder="tu@empresa.com" required/>
+      </div>
+      <div class="form-group">
+        <label for="f-servicio">Servicio de interés</label>
+        <select id="f-servicio">
+          <option value="">Seleccioná un servicio...</option>
+          <option>Estrategia Tecnológica</option>
+          <option>Transformación Digital</option>
+          <option>Selección de Plataformas (RFI/RFP/POC)</option>
+          <option>Implementación de Plataformas</option>
+          <option>PMO / Oficina de Transformación</option>
+          <option>Capacitación & Formación</option>
+          <option>No lo tengo claro aún</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="f-mensaje">Mensaje</label>
+        <textarea id="f-mensaje" placeholder="Contanos brevemente el desafío que estás enfrentando..."></textarea>
+      </div>
+      <button class="form-submit" id="f-submit" onclick="enviarFormulario()">Enviar mensaje →</button>
+      <div class="form-status" id="f-status"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">VÉRTICE <span>·</span> CONSULTING</div>
+    <div class="footer-tagline">Especialistas en Transformación Tecnológica del Sector Financiero LATAM</div>
+  </div>
+  <div class="footer-links">
+    <a href="#hero">Inicio</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#trayectoria">Trayectoria</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#credenciales">Credenciales</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <div class="footer-copy">© 2026 Vértice Consulting · Santiago, Chile</div>
+</footer>
+
+<script>
+  // ══════════════════════════════════════════════════════════════
+  // ⚠️  REEMPLAZÁ ESTA URL con la de tu Google Apps Script deploy
+  // ══════════════════════════════════════════════════════════════
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyji2y1S9499MHgqdI3574FnzwSlEHQ_228vZmNPQW1MIQJTjCMRN5aSmYdgoXSO-9E/exec';
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submission
+  async function enviarFormulario() {
+    const btn    = document.getElementById('f-submit');
+    const status = document.getElementById('f-status');
+    const nombre   = document.getElementById('f-nombre').value.trim();
+    const empresa  = document.getElementById('f-empresa').value.trim();
+    const email    = document.getElementById('f-email').value.trim();
+    const servicio = document.getElementById('f-servicio').value;
+    const mensaje  = document.getElementById('f-mensaje').value.trim();
+
+    // Validación básica
+    if (!nombre) {
+      mostrarStatus('error', 'Por favor ingresá tu nombre.');
+      document.getElementById('f-nombre').focus();
+      return;
+    }
+    if (!email || !email.includes('@')) {
+      mostrarStatus('error', 'Por favor ingresá un email válido.');
+      document.getElementById('f-email').focus();
+      return;
+    }
+
+    // Verificar que la URL está configurada
+    if (APPS_SCRIPT_URL === 'TU_APPS_SCRIPT_URL') {
+      mostrarStatus('error', '⚙️ Falta configurar la URL del Google Apps Script. Revisá las instrucciones.');
+      return;
+    }
+
+    // Estado: enviando
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    status.className = 'form-status';
+    status.style.display = 'none';
+
+    try {
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, empresa, email, servicio, mensaje })
+      });
+
+      // Con mode: 'no-cors' no podemos leer la respuesta, pero si no hubo excepción, funcionó
+      mostrarStatus('success', '✅ ¡Mensaje enviado! Te respondemos en menos de 24 horas.');
+
+      // Limpiar formulario
+      document.getElementById('f-nombre').value = '';
+      document.getElementById('f-empresa').value = '';
+      document.getElementById('f-email').value = '';
+      document.getElementById('f-servicio').value = '';
+      document.getElementById('f-mensaje').value = '';
+
+    } catch (err) {
+      console.error('Error al enviar:', err);
+      mostrarStatus('error', '❌ Hubo un problema al enviar. Intentá de nuevo o escribinos a fespil@gmail.com');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Enviar mensaje →';
+    }
+  }
+
+  function mostrarStatus(tipo, texto) {
+    const status = document.getElementById('f-status');
+    status.className = 'form-status ' + tipo;
+    status.textContent = texto;
+    status.style.display = 'block';
+    status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+</body>
+</html>
