@@ -217,8 +217,14 @@
   .latam-countries {
     display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;
   }
-  .latam-countries span { opacity: 0.8; }
+  .latam-countries span { opacity: 0.8; position: relative; }
   .latam-countries span:hover { opacity: 1; }
+  .latam-countries span + span::before {
+    content: '·';
+    position: absolute;
+    left: -0.95rem;
+    opacity: 0.5;
+  }
 
   /* ── SECTION BASE ────────────────────────────────────── */
   section { padding: 6rem 5rem; }
@@ -1041,8 +1047,8 @@
   <div class="hero-right">
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num">40+</div>
-        <div class="hero-stat-label">Años de experiencia combinada en tecnología y consultoría</div>
+        <div class="hero-stat-num">20+</div>
+        <div class="hero-stat-label">Años de experiencia en tecnología y consultoría</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num">8</div>
@@ -1064,14 +1070,14 @@
 <div class="latam-strip">
   <span style="font-weight:600;opacity:1;margin-right:0.5rem;">Experiencia en:</span>
   <div class="latam-countries">
-    <span>🇦🇷 Argentina</span>
-    <span>🇧🇷 Brasil</span>
-    <span>🇨🇱 Chile</span>
-    <span>🇨🇴 Colombia</span>
-    <span>🇵🇦 Panamá</span>
-    <span>🇵🇪 Perú</span>
-    <span>🇺🇾 Uruguay</span>
-    <span>🇸🇻 El Salvador</span>
+    <span>Argentina</span>
+    <span>Brasil</span>
+    <span>Chile</span>
+    <span>Colombia</span>
+    <span>Panamá</span>
+    <span>Perú</span>
+    <span>Uruguay</span>
+    <span>El Salvador</span>
   </div>
 </div>
 
@@ -1703,13 +1709,6 @@
         <span class="industry-chip">Equipos multiculturales</span>
       </div>
 
-      <div class="cred-column-title" style="margin-top: 2.5rem;">Idiomas</div>
-      <ul class="cred-list">
-        <li class="cred-item">
-          <div class="cred-icon">🌎</div>
-          <div><strong>Castellano:</strong> Nativo &nbsp;·&nbsp; <strong>Inglés:</strong> Avanzado (Upper Intermediate)</div>
-        </li>
-      </ul>
     </div>
 
   </div>
