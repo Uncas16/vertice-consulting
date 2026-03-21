@@ -631,6 +631,91 @@
     letter-spacing: 0.05em;
   }
 
+  /* ── EQUIPO (NEW) ────────────────────────────────────── */
+  #equipo {
+    background: var(--white);
+  }
+  .equipo-header { margin-bottom: 3.5rem; }
+  .equipo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .equipo-card {
+    background: var(--off);
+    border: 1px solid rgba(8,145,178,0.12);
+    border-radius: 4px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .equipo-card:hover { border-color: var(--teal); }
+  .equipo-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-lt));
+  }
+  .equipo-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 0.25rem;
+  }
+  .equipo-role {
+    font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 1rem;
+  }
+  .equipo-bio {
+    font-size: 0.88rem; line-height: 1.7;
+    color: var(--gray); margin-bottom: 1.25rem;
+  }
+  .equipo-firms {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .equipo-firm {
+    font-size: 0.7rem; font-weight: 500;
+    padding: 0.25rem 0.65rem;
+    background: var(--navy);
+    color: var(--teal-lt);
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+  .equipo-linkedin {
+    font-size: 0.82rem;
+    color: var(--teal);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(8,145,178,0.3);
+    transition: border-color 0.2s;
+  }
+  .equipo-linkedin:hover { border-color: var(--teal); }
+
+  /* ── TRAYECTORIA TABS ──────────────────────────────── */
+  .tray-tabs {
+    display: flex; gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .tray-tab {
+    padding: 0.6rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 500;
+    border: 1px solid rgba(8,145,178,0.2);
+    border-radius: 2px;
+    background: transparent;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tray-tab:hover { border-color: var(--teal); color: var(--teal); }
+  .tray-tab.active {
+    background: var(--teal);
+    color: var(--white);
+    border-color: var(--teal);
+  }
+  .tray-panel { display: none; }
+  .tray-panel.active { display: block; }
+
   /* ── ANIMATIONS ──────────────────────────────────────── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -641,11 +726,28 @@
     to   { opacity: 1; }
   }
 
+  /* Safety: force visibility after animation duration in case animations don't run */
+  .hero-tag, .hero-title, .hero-sub, .hero-actions, .hero-right {
+    animation-fill-mode: forwards;
+  }
+
   .reveal {
     opacity: 0; transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Fallback: if JS doesn't load, show everything */
+  .no-js .reveal,
+  .no-js .hero-tag,
+  .no-js .hero-title,
+  .no-js .hero-sub,
+  .no-js .hero-actions,
+  .no-js .hero-right {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
@@ -653,36 +755,257 @@
   .reveal-delay-5 { transition-delay: 0.5s; }
 
   /* ── RESPONSIVE ──────────────────────────────────────── */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    section { padding: 5rem 3rem; }
+    .hero-left { padding: 8rem 3rem 6rem 3rem; }
+    .hero-right { padding: 8rem 2rem 6rem 1rem; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    nav { padding: 0.9rem 1.25rem; }
+    nav.scrolled { padding: 0.75rem 1.25rem; }
+    .nav-logo { font-size: 1.1rem; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
-    section { padding: 4rem 1.75rem; }
-    #hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 7rem 1.75rem 4rem; }
-    #nosotros { grid-template-columns: 1fr; gap: 3rem; }
-    .services-grid { grid-template-columns: 1fr; }
-    #contacto { grid-template-columns: 1fr; gap: 3rem; }
-    .cred-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .timeline::before { left: 0; }
-    footer { flex-direction: column; padding: 2rem 1.75rem; }
-    .form-row { grid-template-columns: 1fr; }
-    .latam-strip { padding: 0.85rem 1.5rem; }
-    .latam-countries { gap: 0.75rem; }
+
+    /* Mobile menu overlay */
+    .nav-links.mobile-open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(7, 24, 40, 0.97);
+      backdrop-filter: blur(16px);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      animation: fadeIn 0.3s ease;
+    }
+    .nav-links.mobile-open a {
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+    .nav-links.mobile-open .nav-cta {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+    }
+    .nav-links.mobile-open::before {
+      content: '✕';
+      position: absolute;
+      top: 1.25rem; right: 1.5rem;
+      font-size: 1.5rem;
+      color: var(--gray-lt);
+      cursor: pointer;
+    }
+
+    section { padding: 3.5rem 1.25rem; }
+
+    /* Hero */
+    #hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .hero-left {
+      padding: 6rem 1.25rem 2.5rem;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 8vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      word-break: break-word;
+    }
+    .hero-tag {
+      font-size: 0.65rem;
+      margin-bottom: 1.25rem;
+    }
+    .hero-sub {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+    .hero-actions {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .btn-primary, .btn-outline {
+      width: 100%;
+      justify-content: center;
+      padding: 0.9rem 1.5rem;
+    }
+
+    /* Show stats on mobile below hero text */
+    .hero-right {
+      display: flex;
+      padding: 0 1.25rem 3rem;
+      opacity: 1;
+      animation: none;
+    }
+    .hero-stats {
+      max-width: 100%;
+    }
+    .hero-stat {
+      padding: 1.25rem 1rem;
+    }
+    .hero-stat-num {
+      font-size: 2.2rem;
+    }
+    .hero-stat-label {
+      font-size: 0.7rem;
+    }
+
+    /* LATAM strip */
+    .latam-strip {
+      padding: 0.75rem 1rem;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.68rem;
+    }
+    .latam-countries {
+      gap: 0.5rem 0.75rem;
+      font-size: 0.68rem;
+    }
+
+    /* Sections */
+    .section-title {
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+    }
+    .section-sub {
+      font-size: 0.9rem;
+    }
+
+    /* Nosotros */
+    #nosotros {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .nosotros-card {
+      padding: 1.75rem;
+    }
+    .pillar {
+      padding: 0.75rem;
+    }
+    .nosotros-quote {
+      font-size: 1.2rem;
+      padding-left: 1rem;
+    }
+
+    /* Timeline */
+    .timeline-block {
+      padding-left: 2rem;
+    }
+    .timeline-highlights {
+      gap: 0.35rem;
+    }
+    .timeline-chip {
+      font-size: 0.62rem;
+      padding: 0.2rem 0.5rem;
+    }
+
+    /* Services */
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    .service-card {
+      padding: 1.75rem;
+    }
+    .service-num {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Credentials */
+    .cred-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    /* Equipo */
+    .equipo-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .equipo-card {
+      padding: 1.75rem;
+    }
+
+    /* Trayectoria tabs */
+    .tray-tabs {
+      gap: 0.35rem;
+    }
+    .tray-tab {
+      padding: 0.5rem 1rem;
+      font-size: 0.78rem;
+    }
+    .industries-wrap {
+      gap: 0.4rem;
+    }
+    .industry-chip {
+      font-size: 0.72rem;
+      padding: 0.35rem 0.75rem;
+    }
+
+    /* Contact */
+    #contacto {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .contact-form {
+      padding: 1.75rem;
+    }
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    .contact-item {
+      padding: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2rem 1.25rem;
+      gap: 1.25rem;
+    }
+    .footer-links {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+
+  /* Small phones */
+  @media (max-width: 380px) {
+    .hero-title {
+      font-size: 1.75rem;
+    }
+    .hero-left {
+      padding: 5.5rem 1rem 2rem;
+    }
+    .hero-right {
+      padding: 0 1rem 2.5rem;
+    }
+    section { padding: 3rem 1rem; }
+    .nav-logo { font-size: 0.95rem; }
   }
 </style>
 </head>
-<body>
+<body class="no-js">
+
+<!-- Remove no-js immediately -->
+<script>document.body.classList.remove('no-js');</script>
 
 <!-- NAV -->
 <nav id="nav">
   <a href="#hero" class="nav-logo">VÉRTICE <span>·</span> CONSULTING</a>
   <ul class="nav-links">
     <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#equipo">Equipo</a></li>
     <li><a href="#trayectoria">Trayectoria</a></li>
     <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#credenciales">Credenciales</a></li>
     <li><a href="#contacto" class="nav-cta">Hablemos →</a></li>
   </ul>
   <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')" aria-label="Menú">
@@ -704,9 +1027,9 @@
       la ejecución.
     </h1>
     <p class="hero-sub">
-      Acompañamos a aseguradoras, bancos y bancaseguros en LATAM en sus procesos de
-      transformación digital, implementación de Core de Seguros, plataformas de distribución
-      y gobierno de proyectos. Sin atajos, sin generalistas.
+      Acompañamos a aseguradoras, bancos, bancaseguros, AFPs y empresas del sector financiero
+      en LATAM en sus procesos de transformación digital, implementación de plataformas Core,
+      gobierno de datos y gestión de proyectos. Sin atajos, sin generalistas.
     </p>
     <div class="hero-actions">
       <a href="#servicios" class="btn-primary">Ver servicios →</a>
@@ -717,16 +1040,16 @@
   <div class="hero-right">
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num">20+</div>
-        <div class="hero-stat-label">Años de experiencia en tecnología y consultoría</div>
+        <div class="hero-stat-num">40+</div>
+        <div class="hero-stat-label">Años de experiencia combinada en tecnología y consultoría</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num">8</div>
         <div class="hero-stat-label">Países en la región LATAM</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">15+</div>
-        <div class="hero-stat-label">Proyectos de Core de Seguros y plataformas</div>
+        <div class="hero-stat-num">10+</div>
+        <div class="hero-stat-label">Industrias atendidas</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num">100%</div>
@@ -738,7 +1061,7 @@
 
 <!-- LATAM STRIP -->
 <div class="latam-strip">
-  <span style="font-weight:600;opacity:1;margin-right:0.5rem;">Presencia en:</span>
+  <span style="font-weight:600;opacity:1;margin-right:0.5rem;">Experiencia en:</span>
   <div class="latam-countries">
     <span>🇦🇷 Argentina</span>
     <span>🇧🇷 Brasil</span>
@@ -760,15 +1083,15 @@
         <div class="pillar">
           <div class="pillar-num">01</div>
           <div>
-            <div class="pillar-title">Especialización vertical</div>
-            <div class="pillar-desc">Foco en seguros, banca, bancaseguros y sector financiero. No somos generalistas.</div>
+            <div class="pillar-title">Especialización sectorial</div>
+            <div class="pillar-desc">Foco en seguros, banca, bancaseguros, AFPs y sector financiero. Conocemos cada industria de adentro.</div>
           </div>
         </div>
         <div class="pillar">
           <div class="pillar-num">02</div>
           <div>
             <div class="pillar-title">Visión end-to-end</div>
-            <div class="pillar-desc">Estrategia, selección (RFI/RFP/POC), GAP Analysis, implementación y gobierno de proyectos.</div>
+            <div class="pillar-desc">Estrategia, selección (RFI/RFP/POC), GAP Analysis, implementación, gobierno de datos y gestión del cambio.</div>
           </div>
         </div>
         <div class="pillar">
@@ -781,8 +1104,8 @@
         <div class="pillar">
           <div class="pillar-num">04</div>
           <div>
-            <div class="pillar-title">Red y cultura LATAM</div>
-            <div class="pillar-desc">Experiencia real en 8 países. Equipos multiculturales, entendemos cada mercado de adentro.</div>
+            <div class="pillar-title">Background Big Four + LATAM</div>
+            <div class="pillar-desc">Formados en EY, Deloitte, KPMG, IBM y HP. Experiencia real en 8 países de la región.</div>
           </div>
         </div>
       </div>
@@ -793,17 +1116,84 @@
     <div class="section-label reveal">Quiénes somos</div>
     <h2 class="section-title reveal reveal-delay-1">Consultoría <em>boutique</em>,<br/>conocimiento profundo.</h2>
     <blockquote class="nosotros-quote reveal reveal-delay-2">
-      "Combinamos visión estratégica con ejecución práctica y conocimiento real de la industria aseguradora y financiera en LATAM."
+      "Combinamos visión estratégica con ejecución práctica y conocimiento real de la industria financiera en LATAM."
     </blockquote>
     <p class="section-sub reveal reveal-delay-3">
-      Vértice Consulting nació de más de 20 años de experiencia liderando proyectos de transformación
-      tecnológica en firmas como EY, Deloitte y en consultoría independiente (Kopernicus Tech),
-      con proyectos en aseguradoras, bancaseguros, banca y organismos financieros en toda la región.
-      Ingeniero en Informática con sólida capacidad de gestión y profundo conocimiento del negocio asegurador.
+      Vértice Consulting reúne a tres consultores con amplia experiencia
+      en transformación tecnológica del sector financiero. Formados en firmas como EY, Deloitte, KPMG, IBM y HP,
+      hemos liderado proyectos de implementación de Core, selección de plataformas, Data Governance, PMOs,
+      oficinas de transformación, analítica avanzada e IA aplicada en aseguradoras, bancos, AFPs y bancaseguros en toda la región.
     </p>
     <div style="margin-top:2rem;" class="reveal reveal-delay-4">
-      <a href="#trayectoria" class="btn-primary">Ver trayectoria →</a>
+      <a href="#equipo" class="btn-primary">Conocer al equipo →</a>
     </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+  <div class="equipo-header">
+    <div class="section-label reveal">Nuestro equipo</div>
+    <h2 class="section-title reveal reveal-delay-1">Tres consultores,<br/><em>una visión</em> compartida.</h2>
+    <p class="section-sub reveal reveal-delay-2">
+      Formados en las principales firmas de consultoría global, con amplia experiencia
+      liderando proyectos de alta complejidad en el sector financiero de LATAM.
+    </p>
+  </div>
+
+  <div class="equipo-grid">
+
+    <div class="equipo-card reveal">
+      <div class="equipo-name">Federico Espil</div>
+      <div class="equipo-role">Ingeniero en Informática</div>
+      <div class="equipo-bio">
+        +20 años en tecnología y consultoría | Especialista en PMO, OdT, Transformación Digital
+        y Core y plataformas de distribución de Seguros para el sector financiero en LATAM.
+      </div>
+      <div class="equipo-firms">
+        <span class="equipo-firm">EY</span>
+        <span class="equipo-firm">Deloitte</span>
+        <span class="equipo-firm">HP</span>
+        <span class="equipo-firm">EDS</span>
+        <span class="equipo-firm">Kopernicus Tech</span>
+      </div>
+      <a href="https://www.linkedin.com/in/federicoespil/" target="_blank" class="equipo-linkedin">LinkedIn →</a>
+    </div>
+
+    <div class="equipo-card reveal reveal-delay-1">
+      <div class="equipo-name">Felipe Bongain</div>
+      <div class="equipo-role">Ing. Civil Industrial & Ing. Ejecución Química</div>
+      <div class="equipo-bio">
+        +20 años en implementación de proyectos TI y buenas prácticas. Especialista en reingeniería
+        de procesos, data governance, protección de datos personales, UX/UC, testing y gestión del cambio.
+        Experiencia en Seguros, Banca, AFPs, TELCO, mutuales y servicios de seguridad.
+      </div>
+      <div class="equipo-firms">
+        <span class="equipo-firm">KPMG</span>
+        <span class="equipo-firm">Deloitte</span>
+        <span class="equipo-firm">IBM</span>
+        <span class="equipo-firm">BBVA</span>
+        <span class="equipo-firm">Securitas</span>
+      </div>
+      <a href="https://www.linkedin.com/in/felipe-bongain-755a228" target="_blank" class="equipo-linkedin">LinkedIn →</a>
+    </div>
+
+    <div class="equipo-card reveal reveal-delay-2">
+      <div class="equipo-name">Diego Macaya</div>
+      <div class="equipo-role">Ingeniero Comercial · Data Science</div>
+      <div class="equipo-bio">
+        Especialista en analítica de datos, IA aplicada y gestión de proyectos de transformación.
+        Experiencia en OdTs, PMOs, optimización de procesos, reportería avanzada (Power BI) y
+        desarrollo de soluciones de IA para el sector financiero y asegurador.
+      </div>
+      <div class="equipo-firms">
+        <span class="equipo-firm">Kopernicus Tech</span>
+        <span class="equipo-firm">Deloitte</span>
+        <span class="equipo-firm">Galgo</span>
+      </div>
+      <a href="mailto:diego@macaya.cl" class="equipo-linkedin">Contacto →</a>
+    </div>
+
   </div>
 </section>
 
@@ -818,6 +1208,13 @@
     </p>
   </div>
 
+  <div class="tray-tabs reveal reveal-delay-2">
+    <button class="tray-tab active" onclick="switchTab('federico', this)">Federico Espil</button>
+    <button class="tray-tab" onclick="switchTab('felipe', this)">Felipe Bongain</button>
+    <button class="tray-tab" onclick="switchTab('diego', this)">Diego Macaya</button>
+  </div>
+
+  <div class="tray-panel active" id="panel-federico">
   <div class="timeline">
 
     <div class="timeline-block reveal">
@@ -832,7 +1229,6 @@
         <span class="timeline-chip">Soporte y mantenimiento Core – Uruguay</span>
         <span class="timeline-chip">PMO implementación Core – Uruguay</span>
         <span class="timeline-chip">Transformación Digital LATAM (5 países)</span>
-        <span class="timeline-chip">Selección implementador Core – El Salvador</span>
         <span class="timeline-chip">RFP Move to Cloud – Chile</span>
         <span class="timeline-chip">RFP Software Actuarial – Chile</span>
         <span class="timeline-chip">Estrategia Tecnológica – Chile</span>
@@ -890,8 +1286,131 @@
     </div>
 
   </div>
-</section>
+  </div>
 
+  <div class="tray-panel" id="panel-felipe">
+  <div class="timeline">
+
+    <div class="timeline-block reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Nov 2020 – Abr 2025 · 4 años y 5 meses</div>
+      <div class="timeline-role">Subgerente de Transformación Digital</div>
+      <div class="timeline-company">Securitas Chile · 7.300 empleados · Facturación USD $70-90MM</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Conducción de transformación operativa Chile</span>
+        <span class="timeline-chip">CRM Dynamics CEP</span>
+        <span class="timeline-chip">Firma Digital</span>
+        <span class="timeline-chip">Plataforma Vision (protocolos de vigilancia)</span>
+        <span class="timeline-chip">Gestor Documental</span>
+        <span class="timeline-chip">Renovación RRHH (PeopleNet)</span>
+      </div>
+    </div>
+
+    <div class="timeline-block reveal reveal-delay-1">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Ene 2019 – Oct 2020 · 1 año y 10 meses</div>
+      <div class="timeline-role">Supervisor en Consultoría (Advisory)</div>
+      <div class="timeline-company">KPMG Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Cambio de Core Insis – Seguros SURA (Normativo, Funcional, Procesos)</span>
+        <span class="timeline-chip">Estrategia Migración a la Nube – MOP</span>
+        <span class="timeline-chip">Data Governance – Mutual (linaje de KPIs)</span>
+        <span class="timeline-chip">Protección de Datos Personales – Coopeuch</span>
+        <span class="timeline-chip">Diagnóstico TI – Vías Chile</span>
+        <span class="timeline-chip">Due Diligence seguros – BTG Pactual Chile</span>
+        <span class="timeline-chip">Adecuación SAP (CO, FI) – Elettric80</span>
+      </div>
+    </div>
+
+    <div class="timeline-block reveal reveal-delay-2">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Jun 2016 – Jun 2018 · 2 años</div>
+      <div class="timeline-role">Consultor Senior – TSA</div>
+      <div class="timeline-company">Deloitte Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Impacto Organizacional – Entel Chile (descriptores de cargo, procesos Pre-Venta)</span>
+        <span class="timeline-chip">Assessment costeo y SCM – Entel Chile</span>
+        <span class="timeline-chip">Cambio de Core Seguros – Paribas Cardif (procesos e integraciones)</span>
+        <span class="timeline-chip">Estrategia implementación Core Iaxis – Zúrich Seguros (taxonomía de productos)</span>
+      </div>
+    </div>
+
+    <div class="timeline-block reveal reveal-delay-2">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Oct 2007 – May 2014 · 6 años y 7 meses</div>
+      <div class="timeline-role">Business Analyst – AMS</div>
+      <div class="timeline-company">IBM Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Procesos Cash Management y Rating – Banco de Chile</span>
+        <span class="timeline-chip">Líder QA – BCI</span>
+        <span class="timeline-chip">IT Strategic – Rabobank, Banco Ripley</span>
+        <span class="timeline-chip">Implementación PMO – Servipag</span>
+        <span class="timeline-chip">Blueprint y cambio Core – Transbank</span>
+      </div>
+    </div>
+
+    <div class="timeline-block reveal reveal-delay-3">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2000 – 2007</div>
+      <div class="timeline-role">Roles de análisis funcional y procesos</div>
+      <div class="timeline-company">BBVA Pensiones (Centro de Desarrollo Regional AFPs) · Banco BBVA</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Cambio de Core AFPs – Chile, México, Perú, Colombia</span>
+        <span class="timeline-chip">Frentes funcionales, procesos, configuración y testing</span>
+        <span class="timeline-chip">Cambio de Core bancario Altamira – Banco BHIF/BBVA</span>
+        <span class="timeline-chip">Taller de productos de préstamos</span>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <div class="tray-panel" id="panel-diego">
+  <div class="timeline">
+
+    <div class="timeline-block reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2022 – 2025</div>
+      <div class="timeline-role">Consultor de Analítica y Datos / Consultor Líder</div>
+      <div class="timeline-company">Kopernicus Tech · Chile, Panamá, Perú</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Piloto IA asesor experto para ejecutivos comerciales de seguros (12 semanas)</span>
+        <span class="timeline-chip">Reportería Power BI para 3 clientes (mejora 85%+ en auditorías)</span>
+        <span class="timeline-chip">Pipeline de datos para sistema RAG (4 semanas)</span>
+        <span class="timeline-chip">Planificación implementación INSIS – Pacífico Salud, Perú (horizonte 4 años)</span>
+        <span class="timeline-chip">OdT programa transformación SURA Panamá (7 proyectos, +50 profesionales)</span>
+        <span class="timeline-chip">Planificación integrada con JIRA – riesgos, dependencias e hitos</span>
+      </div>
+    </div>
+
+    <div class="timeline-block reveal reveal-delay-1">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2021 – 2022</div>
+      <div class="timeline-role">Ingeniero de Proyectos</div>
+      <div class="timeline-company">Galgo · Chile, Perú, Colombia, México</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Optimización reporte cierre comercial: de 2 horas a 20 minutos (SQL)</span>
+        <span class="timeline-chip">Triplicó capacidad equipo operativo (+10-20% facturación mensual)</span>
+        <span class="timeline-chip">Reportes en línea: rentabilidad, segmentación y análisis de clientes</span>
+      </div>
+    </div>
+
+    <div class="timeline-block reveal reveal-delay-2">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2018 – 2021 · 3 años</div>
+      <div class="timeline-role">Analista</div>
+      <div class="timeline-company">Deloitte Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Separación funcional Servicios Financieros Líder → BCI</span>
+        <span class="timeline-chip">Integración CMF + SBIF (plan 3 fases, 12 meses)</span>
+        <span class="timeline-chip">PMO implementación normas internacionales en bancos principales</span>
+        <span class="timeline-chip">Gestión de compromisos, riesgos y reporting ejecutivo</span>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
 <!-- SERVICIOS -->
 <section id="servicios">
   <div class="services-header">
@@ -900,7 +1419,7 @@
     </div>
     <h2 class="section-title reveal reveal-delay-1">Nuestros <em>servicios</em></h2>
     <p class="section-sub reveal reveal-delay-2">
-      Seis líneas de servicio diseñadas para acompañar a tu organización en cada etapa de la transformación tecnológica.
+      Diez líneas de servicio diseñadas para acompañar a tu organización en cada etapa de la transformación tecnológica.
     </p>
   </div>
 
@@ -926,8 +1445,8 @@
       <div class="service-num">02</div>
       <div class="service-title">Transformación Digital</div>
       <div class="service-desc">
-        Diagnóstico de madurez digital, hoja de ruta estratégica y acompañamiento en ejecución
-        para aseguradoras y bancaseguros en LATAM. Gestión del cambio y adopción.
+        Diagnóstico de madurez digital, hoja de ruta estratégica, gestión del cambio y acompañamiento
+        en ejecución para el sector financiero en LATAM.
       </div>
       <div class="service-tags">
         <span class="service-tag">Diagnóstico</span>
@@ -943,7 +1462,7 @@
       <div class="service-title">Selección de Plataformas</div>
       <div class="service-desc">
         Procesos estructurados de selección de software — RFI, RFP, POC y Demos —
-        para Core de Seguros, software actuarial y plataformas digitales, con evaluación objetiva e independiente.
+        para Core de Seguros, Core Bancario, AFPs y plataformas digitales. Evaluación objetiva e independiente.
       </div>
       <div class="service-tags">
         <span class="service-tag">RFI</span>
@@ -958,14 +1477,14 @@
       <div class="service-num">04</div>
       <div class="service-title">Implementación de Plataformas</div>
       <div class="service-desc">
-        Gestión de proyectos de implementación de Core de Seguros y plataformas de distribución
-        para Bancaseguros. Desde el GAP Analysis y diseño funcional hasta el go-live y migración de cartera.
+        Gestión de proyectos de implementación de Core de Seguros, Core Bancario y plataformas de distribución.
+        Desde el GAP Analysis y diseño funcional hasta el go-live y migración de cartera.
       </div>
       <div class="service-tags">
         <span class="service-tag">GAP Analysis</span>
         <span class="service-tag">Go-live</span>
         <span class="service-tag">Migración</span>
-        <span class="service-tag">Bancaseguros</span>
+        <span class="service-tag">Testing</span>
       </div>
       <div class="service-arrow">→</div>
     </div>
@@ -988,10 +1507,75 @@
 
     <div class="service-card reveal reveal-delay-3">
       <div class="service-num">06</div>
+      <div class="service-title">Reingeniería de Procesos</div>
+      <div class="service-desc">
+        Levantamiento, análisis y rediseño de procesos de negocio (As-Is / To-Be E2E).
+        Análisis de impacto operativo y organizacional, mapas de aplicaciones e integraciones.
+      </div>
+      <div class="service-tags">
+        <span class="service-tag">As-Is / To-Be</span>
+        <span class="service-tag">Impacto</span>
+        <span class="service-tag">UX / UC</span>
+        <span class="service-tag">E2E</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">07</div>
+      <div class="service-title">Data Governance</div>
+      <div class="service-desc">
+        Diseño e implementación de marcos de gobierno de datos: procesos, roles, linaje de variables,
+        KPIs y calidad del dato. Cumplimiento normativo y estrategia data-driven.
+      </div>
+      <div class="service-tags">
+        <span class="service-tag">Gobierno de Datos</span>
+        <span class="service-tag">Linaje</span>
+        <span class="service-tag">Calidad</span>
+        <span class="service-tag">KPIs</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">08</div>
+      <div class="service-title">Protección de Datos Personales</div>
+      <div class="service-desc">
+        Assessment de madurez, roadmap de iniciativas y acompañamiento para cumplimiento
+        de la Ley de Protección de Datos Personales y normativas asociadas.
+      </div>
+      <div class="service-tags">
+        <span class="service-tag">Assessment</span>
+        <span class="service-tag">Madurez</span>
+        <span class="service-tag">Compliance</span>
+        <span class="service-tag">Roadmap</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-num">09</div>
+      <div class="service-title">Analítica, IA & Reportería</div>
+      <div class="service-desc">
+        Diseño y desarrollo de soluciones de IA aplicada, pipelines de datos, sistemas RAG
+        y reportería avanzada (Power BI). Pilotos de IA para asesores comerciales y dashboards
+        operativos que optimizan la toma de decisiones.
+      </div>
+      <div class="service-tags">
+        <span class="service-tag">IA Aplicada</span>
+        <span class="service-tag">Power BI</span>
+        <span class="service-tag">RAG</span>
+        <span class="service-tag">ETL</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">10</div>
       <div class="service-title">Capacitación & Formación</div>
       <div class="service-desc">
         Cursos y talleres en gestión de proyectos, ITIL v4, metodologías ágiles,
-        transformación digital e industria aseguradora. Habilitados para franquicia SENCE en Chile.
+        transformación digital e industria financiera. Habilitados para franquicia SENCE en Chile.
       </div>
       <div class="service-tags">
         <span class="service-tag">ITIL v4</span>
@@ -1011,7 +1595,7 @@
     <div class="section-label reveal">Credenciales</div>
     <h2 class="section-title reveal reveal-delay-1">Formación y <em>certificaciones</em></h2>
     <p class="section-sub reveal reveal-delay-2">
-      Respaldo académico y profesional que complementa la experiencia en terreno.
+      Respaldo académico y profesional que complementa la experiencia en terreno de ambos socios.
     </p>
   </div>
 
@@ -1022,11 +1606,19 @@
       <ul class="cred-list">
         <li class="cred-item">
           <div class="cred-icon">🎓</div>
-          <div><strong>Ingeniero en Informática</strong> — Universidad de Palermo, Buenos Aires</div>
+          <div><strong>Ingeniero en Informática</strong> — Universidad de Palermo, Buenos Aires (F. Espil)</div>
         </li>
         <li class="cred-item">
           <div class="cred-icon">🎓</div>
-          <div><strong>Analista Universitario en Sistemas</strong> — Universidad de Palermo, Buenos Aires</div>
+          <div><strong>Ingeniero Civil Industrial</strong> — Universidad de Las Américas, Santiago (F. Bongain)</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">🎓</div>
+          <div><strong>Ingeniero Comercial</strong> — Universidad Adolfo Ibáñez (D. Macaya)</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">🎓</div>
+          <div><strong>Ingeniero Ejecución en Química</strong> — Universidad de Santiago (F. Bongain)</div>
         </li>
       </ul>
 
@@ -1052,6 +1644,18 @@
           <div class="cred-icon">✓</div>
           <div>PMBOK (IEEE Std 1490-2003) — Universidad de Palermo</div>
         </li>
+        <li class="cred-item">
+          <div class="cred-icon">✓</div>
+          <div>Metodología Ágil (Scrum, Kanban) — IBM</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">✓</div>
+          <div>Certificación Módulo SD-SAP — IBM</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">✓</div>
+          <div>Data Science & Machine Learning — 4Geeks Academy</div>
+        </li>
       </ul>
     </div>
 
@@ -1061,9 +1665,16 @@
         <span class="industry-chip">🛡️ Seguros</span>
         <span class="industry-chip">🏦 Banca</span>
         <span class="industry-chip">🤝 Bancaseguros</span>
+        <span class="industry-chip">📊 AFPs / Previsión</span>
         <span class="industry-chip">💻 Tecnología / IT</span>
         <span class="industry-chip">📡 Telecomunicaciones</span>
         <span class="industry-chip">⛽ Oil & Gas</span>
+        <span class="industry-chip">🏥 Mutuales</span>
+        <span class="industry-chip">🏛️ Ministerios / Gobierno</span>
+        <span class="industry-chip">🛣️ Concesionarias</span>
+        <span class="industry-chip">🔒 Servicios de Seguridad</span>
+        <span class="industry-chip">💳 Servicios Transaccionales</span>
+        <span class="industry-chip">🏍️ Retail Financiero</span>
       </div>
 
       <div class="cred-column-title" style="margin-top: 2.5rem;">Competencias Clave</div>
@@ -1073,11 +1684,21 @@
         <span class="industry-chip">Transformación Digital</span>
         <span class="industry-chip">Estrategia Tecnológica</span>
         <span class="industry-chip">Core de Seguros</span>
+        <span class="industry-chip">Core Bancario</span>
         <span class="industry-chip">Plataformas de Distribución</span>
         <span class="industry-chip">RFI / RFP / POC</span>
+        <span class="industry-chip">Data Governance</span>
+        <span class="industry-chip">Protección de Datos</span>
+        <span class="industry-chip">Reingeniería de Procesos</span>
+        <span class="industry-chip">UX / UC</span>
         <span class="industry-chip">RPA / Automatización</span>
         <span class="industry-chip">ITSM / ITIL v4</span>
         <span class="industry-chip">Scrum / Ágiles</span>
+        <span class="industry-chip">Testing / QA</span>
+        <span class="industry-chip">IA Aplicada / RAG</span>
+        <span class="industry-chip">Power BI / Reportería</span>
+        <span class="industry-chip">SQL / ETL / Data Pipelines</span>
+        <span class="industry-chip">Gestión del Cambio</span>
         <span class="industry-chip">Equipos multiculturales</span>
       </div>
 
@@ -1108,21 +1729,21 @@
         <div class="contact-icon">✉️</div>
         <div>
           <div class="contact-item-label">Email</div>
-          <div class="contact-item-val"><a href="mailto:fespil@gmail.com">fespil@gmail.com</a></div>
+          <div class="contact-item-val"><a href="mailto:fespil@gmail.com">fespil@gmail.com</a> · <a href="mailto:fbongain@hotmail.com">fbongain@hotmail.com</a></div>
         </div>
       </div>
       <div class="contact-item reveal reveal-delay-3">
         <div class="contact-icon">📞</div>
         <div>
           <div class="contact-item-label">Teléfono / WhatsApp</div>
-          <div class="contact-item-val"><a href="https://wa.me/56968344060">+56 9 6834-4060</a></div>
+          <div class="contact-item-val"><a href="https://wa.me/56968344060">+56 9 6834-4060</a> (Federico) · <a href="https://wa.me/56985763453">+56 9 8576-3453</a> (Felipe)</div>
         </div>
       </div>
       <div class="contact-item reveal reveal-delay-4">
         <div class="contact-icon">💼</div>
         <div>
           <div class="contact-item-label">LinkedIn</div>
-          <div class="contact-item-val"><a href="https://www.linkedin.com/in/federicoespil/" target="_blank">linkedin.com/in/federicoespil</a></div>
+          <div class="contact-item-val"><a href="https://www.linkedin.com/in/federicoespil/" target="_blank">Federico Espil</a> · <a href="https://www.linkedin.com/in/felipe-bongain-755a228" target="_blank">Felipe Bongain</a></div>
         </div>
       </div>
       <div class="contact-item reveal reveal-delay-5">
@@ -1161,6 +1782,10 @@
           <option>Selección de Plataformas (RFI/RFP/POC)</option>
           <option>Implementación de Plataformas</option>
           <option>PMO / Oficina de Transformación</option>
+          <option>Reingeniería de Procesos</option>
+          <option>Data Governance</option>
+          <option>Protección de Datos Personales</option>
+          <option>Analítica, IA & Reportería</option>
           <option>Capacitación & Formación</option>
           <option>No lo tengo claro aún</option>
         </select>
@@ -1184,9 +1809,9 @@
   <div class="footer-links">
     <a href="#hero">Inicio</a>
     <a href="#nosotros">Nosotros</a>
+    <a href="#equipo">Equipo</a>
     <a href="#trayectoria">Trayectoria</a>
     <a href="#servicios">Servicios</a>
-    <a href="#credenciales">Credenciales</a>
     <a href="#contacto">Contacto</a>
   </div>
   <div class="footer-copy">© 2026 Vértice Consulting · Santiago, Chile</div>
@@ -1203,6 +1828,29 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
+
+  // Mobile menu: close when a link is tapped
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('mobile-open');
+    });
+  });
+  // Close mobile menu when clicking the overlay background
+  document.querySelector('.nav-links').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('mobile-open');
+  });
+
+  // Trayectoria tabs
+  function switchTab(name, btn) {
+    document.querySelectorAll('.tray-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tray-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + name).classList.add('active');
+    // Re-trigger reveal animations for newly visible elements
+    document.querySelectorAll('#panel-' + name + ' .reveal').forEach(el => {
+      observer.observe(el);
+    });
+  }
 
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
