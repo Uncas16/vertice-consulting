@@ -193,6 +193,21 @@
     color: var(--ink); border-left: 2px solid var(--accent); padding-left: 1.4rem; margin: 1.75rem 0;
   }
 
+  /* ── PROPÓSITO ── */
+  #proposito { background: var(--paper-2); }
+  .mv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 2rem; border-top: 1px solid var(--ink); }
+  .mv-item { padding: 1.75rem 2.5rem 0 0; }
+  .mv-item + .mv-item { padding-left: 2.5rem; border-left: 1px solid #CDD2C9; }
+  .mv-item h3, .values-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .mv-item p { font-family: var(--serif); font-size: 1.3rem; line-height: 1.5; color: var(--ink); }
+  .values-title { margin: 3.5rem 0 0; padding-bottom: 0.75rem; border-bottom: 1px solid var(--ink); }
+  .values-list { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .values-list li { padding: 1.5rem 1.5rem 0 0; }
+  .values-list li + li { padding-left: 1.5rem; border-left: 1px solid #CDD2C9; }
+  .value-num { display: block; font-family: var(--serif); color: var(--accent); margin-bottom: 0.4rem; }
+  .values-list h4 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; line-height: 1.25; margin-bottom: 0.5rem; }
+  .values-list p { font-size: 0.93rem; color: var(--muted); }
+
   /* ── EQUIPO ── */
   #equipo { background: var(--paper); }
   .equipo-header { margin-bottom: 3rem; }
@@ -404,6 +419,8 @@
     .hero-stats { max-width: 520px; }
     .service-group { grid-template-columns: 1fr; }
     #como-trabajamos { grid-template-columns: 1fr; }
+    .values-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .values-list li, .values-list li + li { padding: 1.5rem 1.5rem 1rem 0; border-left: none; }
     .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .service-card:nth-child(3) { padding-left: 0; border-left: none; padding-top: 1.5rem; border-top: 1px solid var(--line); grid-column: 1 / -1; }
     .clients-strip { grid-template-columns: 1fr; }
@@ -442,6 +459,11 @@
     .clients-list { gap: 0.4rem 1.5rem; }
     .clients-list li { font-size: 1.02rem; }
     .industries-list { grid-template-columns: 1fr; }
+    .mv-grid, .values-list { grid-template-columns: 1fr; }
+    .mv-item, .mv-item + .mv-item { padding: 1.5rem 0; border-left: none; }
+    .mv-item + .mv-item { border-top: 1px solid #CDD2C9; }
+    .mv-item p { font-size: 1.15rem; }
+    .values-list li + li { border-top: 1px solid #CDD2C9; }
     .equipo-card, .equipo-card + .equipo-card { padding: 1.75rem 0; border-left: none; }
     .equipo-card + .equipo-card { border-top: 1px solid var(--line); }
     .result, .result + .result { padding: 1.5rem 0; border-left: none; }
@@ -783,6 +805,30 @@
       <a href="#equipo" class="btn-primary">Conocer al equipo →</a>
     </div>
   </div>
+</section>
+
+<!-- MISIÓN, VISIÓN Y VALORES -->
+<section id="proposito">
+  <div class="section-label">Propósito</div>
+  <h2 class="section-title">Misión, visión y <em>valores</em></h2>
+  <div class="mv-grid">
+    <div class="mv-item">
+      <h3>Misión</h3>
+      <p>Acompañamos a instituciones financieras en sus decisiones y proyectos tecnológicos críticos (selección e implementación de sistemas core, gestión de programas y PMO, transformación y migración a la nube) con un equipo senior que combina experiencia del negocio financiero y dominio técnico, independiente de proveedores y comprometido con dejar capacidades instaladas en cada cliente.</p>
+    </div>
+    <div class="mv-item">
+      <h3>Visión</h3>
+      <p>Ser la consultora de referencia en Latinoamérica para que bancos, aseguradoras e instituciones financieras transformen su tecnología con certeza: proyectos que llegan a puerto, en plazo y con el valor prometido.</p>
+    </div>
+  </div>
+  <h3 class="values-title">Nuestros valores</h3>
+  <ol class="values-list">
+    <li><span class="value-num">01</span><h4>Rigor</h4><p>Decidimos con datos, documentamos lo que hacemos y medimos el avance con criterios acordados desde el inicio.</p></li>
+    <li><span class="value-num">02</span><h4>Independencia</h4><p>No vendemos software ni tenemos comisiones de proveedores: nuestra recomendación responde solo al interés del cliente.</p></li>
+    <li><span class="value-num">03</span><h4>Transparencia</h4><p>Decimos lo que vemos, también cuando es incómodo: riesgos, atrasos y desvíos se informan temprano.</p></li>
+    <li><span class="value-num">04</span><h4>Compromiso con el resultado</h4><p>Nos medimos por lo que el cliente logra, no por las horas que facturamos.</p></li>
+    <li><span class="value-num">05</span><h4>Transferencia de conocimiento</h4><p>Trabajamos codo a codo con los equipos del cliente para que la capacidad quede en casa cuando nos vamos.</p></li>
+  </ol>
 </section>
 
 <!-- EQUIPO -->
