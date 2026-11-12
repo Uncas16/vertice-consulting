@@ -131,15 +131,17 @@
   .hero-stat-num { font-family: var(--serif); font-size: 2.75rem; line-height: 1; margin-bottom: 0.4rem; font-variant-numeric: tabular-nums; }
   .hero-stat-label { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
 
-  /* ── FRANJA LATAM ── */
-  .latam-strip {
-    background: var(--ink); color: #C9D2DC;
-    padding: 1.1rem var(--wrap);
-    display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem;
-    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+  .hero-countries { text-wrap: balance; margin-top: 1.1rem; font-size: 0.82rem; color: var(--muted); letter-spacing: 0.02em; }
+
+  /* ── CLIENTES ── */
+  .clients-strip {
+    background: var(--ink); color: var(--white);
+    padding: 2rem var(--wrap);
+    display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 1fr); gap: 1rem 3rem; align-items: center;
   }
-  .latam-strip > span { color: var(--white); font-weight: 600; }
-  .latam-countries { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; }
+  .clients-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-lt); line-height: 1.5; }
+  .clients-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem 2.25rem; }
+  .clients-list li { font-family: var(--serif); font-size: 1.15rem; color: #E4E9EE; white-space: nowrap; }
 
   /* ── BASE DE SECCIONES ── */
   section { padding: 6rem var(--wrap); }
@@ -185,8 +187,8 @@
   .equipo-bio { font-size: 0.95rem; color: var(--muted); flex-grow: 1; }
   .equipo-firms { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; padding: 0.5rem 0; }
   .equipo-firm { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
-  .equipo-linkedin {
-    align-self: flex-start; font-size: 0.9rem; font-weight: 600; color: var(--accent);
+  .equipo-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+  .equipo-linkedin { font-size: 0.9rem; font-weight: 600; color: var(--accent);
     text-decoration: none; border-bottom: 1px solid currentColor;
   }
   .equipo-linkedin:hover { color: var(--accent-dk); }
@@ -214,11 +216,12 @@
   .timeline-period { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
   .timeline-role { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; line-height: 1.25; }
   .timeline-company { font-size: 0.92rem; color: var(--muted); margin-bottom: 0.75rem; }
-  .timeline-highlights { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .timeline-highlights { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; }
   .timeline-chip {
-    font-size: 0.82rem; line-height: 1.4; padding: 0.3rem 0.7rem;
-    background: var(--paper); border: 1px solid var(--line); border-radius: 2px; color: var(--ink);
+    display: block; position: relative; padding: 0.55rem 0 0.55rem 1rem;
+    font-size: 0.9rem; line-height: 1.45; color: #2E3B4B; border-bottom: 1px solid var(--line);
   }
+  .timeline-chip::before { content: ''; position: absolute; left: 0; top: 1.05rem; width: 0.4rem; height: 1px; background: var(--accent); }
 
   /* ── SERVICIOS ── */
   #servicios { background: var(--paper); }
@@ -232,10 +235,11 @@
     display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr); gap: 1.5rem 3rem;
     padding: 2.5rem 0; border-top: 1px solid var(--ink);
   }
+  .group-num { display: block; font-family: var(--serif); font-size: 0.95rem; color: var(--accent); margin-bottom: 0.4rem; }
   .service-group-head h3 { font-family: var(--serif); font-size: 1.7rem; font-weight: 600; line-height: 1.15; margin-bottom: 0.5rem; }
   .service-group-head p { font-size: 0.95rem; color: var(--muted); }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0; }
-  .service-card { padding: 0 2rem 1.5rem 0; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+  .service-card { padding: 0 2rem 0.5rem 0; display: flex; flex-direction: column; }
   .service-card + .service-card { padding-left: 2rem; border-left: 1px solid var(--line); }
   .service-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; line-height: 1.25; margin-bottom: 0.6rem; }
   .service-desc { font-size: 0.95rem; color: #3D4B5C; margin-bottom: 1rem; }
@@ -243,10 +247,10 @@
   .service-tag { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
   .service-desc strong { color: var(--ink); font-weight: 600; }
   .service-quote {
-    display: inline-block; margin-top: 1rem; font-size: 0.88rem; font-weight: 600;
-    color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px;
+    align-self: flex-start; margin-top: 0.75rem; padding: 0.35rem 0;
+    font-size: 0.86rem; font-weight: 600; color: var(--accent); text-decoration: none;
   }
-  .service-quote:hover { color: var(--accent); }
+  .service-quote:hover { text-decoration: underline; text-underline-offset: 4px; }
 
   /* ── RESULTADOS ── */
   #resultados { background: var(--ink); color: var(--white); padding-block: 5rem; }
@@ -264,14 +268,16 @@
 
   /* ── CÓMO TRABAJAMOS ── */
   #como-trabajamos { background: var(--paper); border-bottom: 1px solid var(--line); }
-  .approach-grid {
-    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
-    margin-top: 2rem; border-top: 1px solid var(--ink);
+  #como-trabajamos { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 2rem 5rem; align-items: start; }
+  .approach-head .section-title { margin-bottom: 0; }
+  .approach-list { list-style: none; border-top: 1px solid var(--ink); }
+  .approach-list li {
+    display: grid; grid-template-columns: 2.5rem minmax(0, 15rem) minmax(0, 1fr); gap: 0.25rem 1.5rem;
+    padding: 1.35rem 0; border-bottom: 1px solid var(--line); align-items: baseline;
   }
-  .approach-item { padding: 1.5rem 1.5rem 0 0; }
-  .approach-item + .approach-item { padding-left: 1.5rem; border-left: 1px solid var(--line); }
-  .approach-item h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; line-height: 1.25; margin-bottom: 0.5rem; }
-  .approach-item p { font-size: 0.93rem; color: var(--muted); }
+  .approach-num { font-family: var(--serif); color: var(--accent); }
+  .approach-list h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; line-height: 1.3; }
+  .approach-list p { font-size: 0.95rem; color: var(--muted); }
 
   /* ── CREDENCIALES ── */
   #credenciales { background: var(--white); }
@@ -284,11 +290,8 @@
   .cred-list { list-style: none; display: flex; flex-direction: column; }
   .cred-item { display: flex; gap: 0.9rem; align-items: baseline; padding: 0.7rem 0; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
   .cred-icon { flex-shrink: 0; width: 0.5rem; height: 0.5rem; background: var(--accent); font-size: 0; transform: translateY(-0.1rem); }
-  .industries-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-  .industry-chip {
-    font-size: 0.88rem; padding: 0.4rem 0.85rem;
-    background: var(--paper); border: 1px solid var(--line); border-radius: 2px; color: var(--ink);
-  }
+  .industries-list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
+  .industries-list li { padding: 0.7rem 0; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
 
   /* ── CONTACTO ── */
   #contacto {
@@ -360,17 +363,11 @@
   }
   .wa-float:hover::after { opacity: 1; }
 
-  /* ── ANIMACIONES (sutiles) ── */
-  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
-  .no-js .reveal { opacity: 1; transform: none; }
-  .reveal-delay-1 { transition-delay: 0.08s; } .reveal-delay-2 { transition-delay: 0.16s; }
-  .reveal-delay-3 { transition-delay: 0.24s; } .reveal-delay-4 { transition-delay: 0.32s; }
-  .reveal-delay-5 { transition-delay: 0.4s; }
+  /* ── MOVIMIENTO: solo para cambios de estado ── */
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
   }
 
   /* ── RESPONSIVE ── */
@@ -378,8 +375,10 @@
     #hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 8rem; }
     .hero-stats { max-width: 520px; }
     .service-group { grid-template-columns: 1fr; }
-    .approach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .approach-item, .approach-item + .approach-item { padding: 1.5rem 1.5rem 1rem 0; border-left: none; }
+    #como-trabajamos { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .service-card:nth-child(3) { padding-left: 0; border-left: none; padding-top: 1.5rem; border-top: 1px solid var(--line); grid-column: 1 / -1; }
+    .clients-strip { grid-template-columns: 1fr; }
     #nosotros, #contacto, .cred-grid { gap: 3rem; }
   }
   @media (max-width: 768px) {
@@ -399,18 +398,24 @@
     #hero { padding-top: 7rem; padding-bottom: 3.5rem; }
     .hero-actions { flex-direction: column; align-items: stretch; }
     .btn-primary { justify-content: center; }
-    .btn-outline { align-self: flex-start; }
+    .btn-outline { align-self: center; }
     .hero-stat-num { font-size: 2.2rem; }
 
     #nosotros, #contacto, .cred-grid { grid-template-columns: 1fr; }
     .nosotros-visual { order: 0; }
-    .equipo-grid, .results-grid, .approach-grid { grid-template-columns: 1fr; }
-    .approach-item + .approach-item { border-top: 1px solid var(--line); }
+    .equipo-grid, .results-grid, .services-grid, .timeline-highlights { grid-template-columns: 1fr; }
+    .approach-list li { grid-template-columns: 2rem minmax(0, 1fr); }
+    .approach-list p { grid-column: 2; }
+    .clients-strip { padding-block: 1.75rem; }
+    .clients-list { gap: 0.4rem 1.5rem; }
+    .clients-list li { font-size: 1.02rem; }
+    .industries-list { grid-template-columns: 1fr; }
     .equipo-card, .equipo-card + .equipo-card { padding: 1.75rem 0; border-left: none; }
     .equipo-card + .equipo-card { border-top: 1px solid var(--line); }
     .result, .result + .result { padding: 1.5rem 0; border-left: none; }
     .result + .result { border-top: 1px solid rgba(255, 255, 255, 0.15); }
-    .service-card, .service-card + .service-card { padding: 0 0 1.5rem; border-left: none; }
+    .service-card, .service-card + .service-card, .service-card:nth-child(3) { padding: 0 0 1.25rem; border-left: none; grid-column: auto; }
+    .service-quote { margin-top: 0.25rem; }
     .service-card + .service-card { padding-top: 1.5rem; border-top: 1px solid var(--line); }
     .timeline-block { padding-left: 1.75rem; }
     .tray-tab { padding: 0.8rem 0.9rem; font-size: 0.88rem; }
@@ -473,40 +478,44 @@
         <div class="hero-stat-label">industrias atendidas</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">100%</div>
-        <div class="hero-stat-label">independencia de fabricantes</div>
+        <div class="hero-stat-num">0</div>
+        <div class="hero-stat-label">contratos con fabricantes de software</div>
       </div>
     </div>
+    <p class="hero-countries">Argentina · Brasil · Chile · Colombia · El Salvador · Panamá · Perú · Uruguay</p>
   </div>
 </section>
 
-<!-- LATAM STRIP -->
-<div class="latam-strip">
-  <span>Experiencia en</span>
-  <div class="latam-countries">
-    <span>Argentina</span>
-    <span>Brasil</span>
-    <span>Chile</span>
-    <span>Colombia</span>
-    <span>Panamá</span>
-    <span>Perú</span>
-    <span>Uruguay</span>
-    <span>El Salvador</span>
-  </div>
+<!-- CLIENTES -->
+<div class="clients-strip">
+  <p class="clients-label">Nuestro equipo ha liderado proyectos para</p>
+  <ul class="clients-list">
+    <li>Seguros SURA</li>
+    <li>Vida Security</li>
+    <li>Zurich Santander Seguros</li>
+    <li>BNP Paribas Cardif</li>
+    <li>Banco BCI</li>
+    <li>Banco Santander</li>
+    <li>Scotiabank</li>
+    <li>Pacífico Salud</li>
+    <li>Banistmo</li>
+    <li>Entel</li>
+  </ul>
 </div>
 
 <!-- SERVICIOS -->
 <section id="servicios">
   <div class="services-header">
     <div>
-      <div class="section-label reveal">Lo que hacemos</div>
-      <h2 class="section-title reveal reveal-delay-1">Cuatro frentes para <em>transformar</em> tu organización</h2>
+      <div class="section-label">Lo que hacemos</div>
+      <h2 class="section-title">Cuatro frentes para <em>transformar</em> tu organización</h2>
     </div>
-    <p class="section-sub reveal reveal-delay-2">Diez líneas de servicio, agrupadas según el problema que resuelven.</p>
+    <p class="section-sub">Diez líneas de servicio, agrupadas según el problema que resuelven.</p>
   </div>
 
-  <div class="service-group reveal">
+  <div class="service-group">
     <div class="service-group-head">
+      <span class="group-num">01</span>
       <h3>Estrategia y transformación</h3>
       <p>Definir el rumbo tecnológico y preparar a la organización para el cambio.</p>
     </div>
@@ -517,12 +526,6 @@
         Definimos el rumbo tecnológico de tu organización. Plan estratégico TI alineado al negocio,
         roadmaps priorizados, modelos de gobierno y estrategias cloud.
       </div>
-      <div class="service-tags">
-        <span class="service-tag">Plan TI</span>
-        <span class="service-tag">Cloud</span>
-        <span class="service-tag">Gobierno</span>
-        <span class="service-tag">Roadmap</span>
-      </div>
       <a href="#contacto" class="service-quote" data-servicio="Estrategia Tecnológica">Cotizar este servicio →</a>
     </div>
 <div class="service-card">
@@ -530,12 +533,6 @@
       <div class="service-desc">
         Diagnóstico de madurez digital, hoja de ruta estratégica, gestión del cambio y acompañamiento
         en ejecución para el sector financiero en LATAM.
-      </div>
-      <div class="service-tags">
-        <span class="service-tag">Diagnóstico</span>
-        <span class="service-tag">Roadmap</span>
-        <span class="service-tag">Ejecución</span>
-        <span class="service-tag">Cambio</span>
       </div>
       <a href="#contacto" class="service-quote" data-servicio="Transformación Digital">Cotizar este servicio →</a>
     </div>
@@ -545,20 +542,15 @@
         Levantamiento, análisis y rediseño de procesos de negocio (As-Is / To-Be E2E).
         Análisis de impacto operativo y organizacional, mapas de aplicaciones e integraciones.
       </div>
-      <div class="service-tags">
-        <span class="service-tag">As-Is / To-Be</span>
-        <span class="service-tag">Impacto</span>
-        <span class="service-tag">UX / UC</span>
-        <span class="service-tag">E2E</span>
-      </div>
       <a href="#contacto" class="service-quote" data-servicio="Reingeniería de Procesos">Cotizar este servicio →</a>
     </div>
 
     </div>
   </div>
 
-  <div class="service-group reveal">
+  <div class="service-group">
     <div class="service-group-head">
+      <span class="group-num">02</span>
       <h3>Plataformas Core</h3>
       <p>Elegir la plataforma correcta e implementarla hasta el go-live.</p>
     </div>
@@ -569,12 +561,6 @@
         Procesos estructurados de selección de software — RFI, RFP, POC y Demos —
         para Core de Seguros, Core Bancario, AFPs y plataformas digitales. Evaluación objetiva e independiente.
       </div>
-      <div class="service-tags">
-        <span class="service-tag">RFI</span>
-        <span class="service-tag">RFP</span>
-        <span class="service-tag">POC</span>
-        <span class="service-tag">Demos</span>
-      </div>
       <a href="#contacto" class="service-quote" data-servicio="Selección de Plataformas (RFI/RFP/POC)">Cotizar este servicio →</a>
     </div>
 <div class="service-card">
@@ -583,20 +569,15 @@
         Gestión de proyectos de implementación de Core de Seguros, Core Bancario y plataformas de distribución.
         Desde el GAP Analysis y diseño funcional hasta el go-live y migración de cartera.
       </div>
-      <div class="service-tags">
-        <span class="service-tag">GAP Analysis</span>
-        <span class="service-tag">Go-live</span>
-        <span class="service-tag">Migración</span>
-        <span class="service-tag">Testing</span>
-      </div>
       <a href="#contacto" class="service-quote" data-servicio="Implementación de Plataformas">Cotizar este servicio →</a>
     </div>
 
     </div>
   </div>
 
-  <div class="service-group reveal">
+  <div class="service-group">
     <div class="service-group-head">
+      <span class="group-num">03</span>
       <h3>Gobierno de programas</h3>
       <p>Ordenar, controlar y comunicar programas de cambio complejos.</p>
     </div>
@@ -606,12 +587,6 @@
       <div class="service-desc">
         Instalación y operación de PMOs y OdTs. Metodologías, estándares de gobierno,
         control de portafolio y reporting ejecutivo a directorio para programas de cambio complejos.
-      </div>
-      <div class="service-tags">
-        <span class="service-tag">PMO</span>
-        <span class="service-tag">OdT</span>
-        <span class="service-tag">Portafolio</span>
-        <span class="service-tag">Reporting</span>
       </div>
       <a href="#contacto" class="service-quote" data-servicio="PMO / Oficina de Transformación">Cotizar este servicio →</a>
     </div>
@@ -625,22 +600,15 @@
         <strong>Para OTEC:</strong> codificación de cursos SENCE, implementación de campus virtual (LMS Moodle),
         desarrollo de cursos e-learning y material pedagógico, y auditoría interna NCh 2728.
       </div>
-      <div class="service-tags">
-        <span class="service-tag">ITIL v4</span>
-        <span class="service-tag">Scrum</span>
-        <span class="service-tag">SENCE</span>
-        <span class="service-tag">PMBOK</span>
-        <span class="service-tag">OTEC</span>
-        <span class="service-tag">LMS</span>
-      </div>
       <a href="#contacto" class="service-quote" data-servicio="Capacitación &amp; Formación">Cotizar este servicio →</a>
     </div>
 
     </div>
   </div>
 
-  <div class="service-group reveal">
+  <div class="service-group">
     <div class="service-group-head">
+      <span class="group-num">04</span>
       <h3>Datos e IA</h3>
       <p>Gobernar, proteger y sacar valor a los datos.</p>
     </div>
@@ -651,12 +619,6 @@
         Diseño e implementación de marcos de gobierno de datos: procesos, roles, linaje de variables,
         KPIs y calidad del dato. Cumplimiento normativo y estrategia data-driven.
       </div>
-      <div class="service-tags">
-        <span class="service-tag">Gobierno de Datos</span>
-        <span class="service-tag">Linaje</span>
-        <span class="service-tag">Calidad</span>
-        <span class="service-tag">KPIs</span>
-      </div>
       <a href="#contacto" class="service-quote" data-servicio="Data Governance">Cotizar este servicio →</a>
     </div>
 <div class="service-card">
@@ -664,12 +626,6 @@
       <div class="service-desc">
         Assessment de madurez, roadmap de iniciativas y acompañamiento para cumplimiento
         de la Ley de Protección de Datos Personales y normativas asociadas.
-      </div>
-      <div class="service-tags">
-        <span class="service-tag">Assessment</span>
-        <span class="service-tag">Madurez</span>
-        <span class="service-tag">Compliance</span>
-        <span class="service-tag">Roadmap</span>
       </div>
       <a href="#contacto" class="service-quote" data-servicio="Protección de Datos Personales">Cotizar este servicio →</a>
     </div>
@@ -679,12 +635,6 @@
         Diseño y desarrollo de soluciones de IA aplicada, pipelines de datos, sistemas RAG
         y reportería avanzada (Power BI). Pilotos de IA para asesores comerciales y dashboards
         operativos que optimizan la toma de decisiones.
-      </div>
-      <div class="service-tags">
-        <span class="service-tag">IA Aplicada</span>
-        <span class="service-tag">Power BI</span>
-        <span class="service-tag">RAG</span>
-        <span class="service-tag">ETL</span>
       </div>
       <a href="#contacto" class="service-quote" data-servicio="Analítica, IA &amp; Reportería">Cotizar este servicio →</a>
     </div>
@@ -718,37 +668,24 @@
 
 <!-- COMO TRABAJAMOS -->
 <section id="como-trabajamos">
-  <div class="section-label reveal">Cómo trabajamos</div>
-  <h2 class="section-title reveal reveal-delay-1">Un método simple, de la estrategia a la <em>ejecución</em></h2>
-  <div class="approach-grid">
-    <div class="approach-item reveal">
-      <h3>Diagnóstico claro</h3>
-      <p>Entendemos el negocio, los procesos y la tecnología actual antes de proponer. Partimos con un diagnóstico acotado y concreto.</p>
-    </div>
-    <div class="approach-item reveal reveal-delay-1">
-      <h3>Soluciones aterrizadas</h3>
-      <p>Recomendaciones que se pueden ejecutar con los recursos, plazos y regulación reales de tu organización.</p>
-    </div>
-    <div class="approach-item reveal reveal-delay-2">
-      <h3>Acompañamiento en la implementación</h3>
-      <p>No entregamos un informe y nos vamos: trabajamos con tus equipos hasta el go-live.</p>
-    </div>
-    <div class="approach-item reveal reveal-delay-3">
-      <h3>Visión integral</h3>
-      <p>Estrategia, procesos, plataformas, datos y personas en un mismo plan, sin silos.</p>
-    </div>
-    <div class="approach-item reveal reveal-delay-4">
-      <h3>Compromiso con resultados</h3>
-      <p>Definimos indicadores desde el inicio y reportamos avances de forma ejecutiva.</p>
-    </div>
+  <div class="approach-head">
+    <div class="section-label">Cómo trabajamos</div>
+    <h2 class="section-title">Un método simple, de la estrategia a la <em>ejecución</em></h2>
   </div>
+  <ol class="approach-list">
+    <li><span class="approach-num">01</span><h3>Diagnóstico claro</h3><p>Entendemos el negocio, los procesos y la tecnología actual antes de proponer. Partimos con un diagnóstico acotado y concreto.</p></li>
+    <li><span class="approach-num">02</span><h3>Soluciones aterrizadas</h3><p>Recomendaciones que se pueden ejecutar con los recursos, plazos y regulación reales de tu organización.</p></li>
+    <li><span class="approach-num">03</span><h3>Acompañamiento en la implementación</h3><p>No entregamos un informe y nos vamos: trabajamos con tus equipos hasta el go-live.</p></li>
+    <li><span class="approach-num">04</span><h3>Visión integral</h3><p>Estrategia, procesos, plataformas, datos y personas en un mismo plan, sin silos.</p></li>
+    <li><span class="approach-num">05</span><h3>Compromiso con resultados</h3><p>Definimos indicadores desde el inicio y reportamos avances de forma ejecutiva.</p></li>
+  </ol>
 </section>
 
 <!-- NOSOTROS -->
 <section id="nosotros">
-  <div class="nosotros-visual reveal">
+  <div class="nosotros-visual">
     <div class="nosotros-card">
-      <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal-lt);margin-bottom:0.5rem;">Nuestra propuesta de valor</div>
+      <div class="section-label" style="margin-bottom:0.5rem;">Nuestra propuesta de valor</div>
       <div class="nosotros-pillars">
         <div class="pillar">
           <div class="pillar-num">01</div>
@@ -783,18 +720,18 @@
   </div>
 
   <div class="nosotros-text">
-    <div class="section-label reveal">Quiénes somos</div>
-    <h2 class="section-title reveal reveal-delay-1">Consultoría <em>boutique</em>,<br/>conocimiento profundo.</h2>
-    <blockquote class="nosotros-quote reveal reveal-delay-2">
-      "Combinamos visión estratégica con ejecución práctica y conocimiento real de la industria financiera en LATAM."
+    <div class="section-label">Quiénes somos</div>
+    <h2 class="section-title">Consultoría <em>boutique</em>,<br/>conocimiento profundo.</h2>
+    <blockquote class="nosotros-quote">
+      “Combinamos visión estratégica con ejecución práctica y conocimiento real de la industria financiera en LATAM.”
     </blockquote>
-    <p class="section-sub reveal reveal-delay-3">
+    <p class="section-sub">
       Vértice Consulting reúne a tres consultores con amplia experiencia
       en transformación tecnológica del sector financiero. Formados en firmas como EY, Deloitte, KPMG, IBM y HP,
       hemos liderado proyectos de implementación de Core, selección de plataformas, Data Governance, PMOs,
       oficinas de transformación, analítica avanzada e IA aplicada en aseguradoras, bancos, AFPs y bancaseguros en toda la región.
     </p>
-    <div style="margin-top:2rem;" class="reveal reveal-delay-4">
+    <div style="margin-top:2rem;">
       <a href="#equipo" class="btn-primary">Conocer al equipo →</a>
     </div>
   </div>
@@ -803,9 +740,9 @@
 <!-- EQUIPO -->
 <section id="equipo">
   <div class="equipo-header">
-    <div class="section-label reveal">Nuestro equipo</div>
-    <h2 class="section-title reveal reveal-delay-1">Tres consultores,<br/><em>una visión</em> compartida.</h2>
-    <p class="section-sub reveal reveal-delay-2">
+    <div class="section-label">Nuestro equipo</div>
+    <h2 class="section-title">Tres consultores,<br/><em>una visión</em> compartida.</h2>
+    <p class="section-sub">
       Formados en las principales firmas de consultoría global, con amplia experiencia
       liderando proyectos de alta complejidad en el sector financiero de LATAM.
     </p>
@@ -813,7 +750,7 @@
 
   <div class="equipo-grid">
 
-    <div class="equipo-card reveal">
+    <div class="equipo-card">
       <div class="equipo-name">Federico Espil</div>
       <div class="equipo-role">Ingeniero en Informática</div>
       <div class="equipo-bio">
@@ -829,10 +766,10 @@
         <span class="equipo-firm">EDS</span>
         <span class="equipo-firm">Kopernicus Tech</span>
       </div>
-      <a href="https://www.linkedin.com/in/federicoespil/" target="_blank" class="equipo-linkedin">LinkedIn →</a>
+      <div class="equipo-links"><a href="#trayectoria" class="equipo-linkedin" data-tab="federico">Ver trayectoria →</a><a href="https://www.linkedin.com/in/federicoespil/" target="_blank" rel="noopener" class="equipo-linkedin">LinkedIn →</a></div>
     </div>
 
-    <div class="equipo-card reveal reveal-delay-1">
+    <div class="equipo-card">
       <div class="equipo-name">Felipe Bongain</div>
       <div class="equipo-role">Ing. Civil Industrial & Ing. Ejecución Química</div>
       <div class="equipo-bio">
@@ -847,10 +784,10 @@
         <span class="equipo-firm">BBVA</span>
         <span class="equipo-firm">Securitas</span>
       </div>
-      <a href="https://www.linkedin.com/in/felipe-bongain-755a228" target="_blank" class="equipo-linkedin">LinkedIn →</a>
+      <div class="equipo-links"><a href="#trayectoria" class="equipo-linkedin" data-tab="felipe">Ver trayectoria →</a><a href="https://www.linkedin.com/in/felipe-bongain-755a228" target="_blank" rel="noopener" class="equipo-linkedin">LinkedIn →</a></div>
     </div>
 
-    <div class="equipo-card reveal reveal-delay-2">
+    <div class="equipo-card">
       <div class="equipo-name">Diego Macaya</div>
       <div class="equipo-role">Ingeniero Comercial · Data Science</div>
       <div class="equipo-bio">
@@ -863,7 +800,7 @@
         <span class="equipo-firm">Deloitte</span>
         <span class="equipo-firm">Galgo</span>
       </div>
-      <a href="https://www.linkedin.com/in/diego-macaya-silva/" target="_blank" class="equipo-linkedin">LinkedIn →</a>
+      <div class="equipo-links"><a href="#trayectoria" class="equipo-linkedin" data-tab="diego">Ver trayectoria →</a><a href="https://www.linkedin.com/in/diego-macaya-silva/" target="_blank" rel="noopener" class="equipo-linkedin">LinkedIn →</a></div>
     </div>
 
   </div>
@@ -872,15 +809,15 @@
 <!-- TRAYECTORIA -->
 <section id="trayectoria">
   <div class="trayectoria-header">
-    <div class="section-label reveal">Trayectoria</div>
-    <h2 class="section-title reveal reveal-delay-1">Experiencia que <em>respalda</em><br/>cada recomendación.</h2>
-    <p class="section-sub reveal reveal-delay-2">
+    <div class="section-label">Trayectoria</div>
+    <h2 class="section-title">Experiencia que <em>respalda</em><br/>cada recomendación.</h2>
+    <p class="section-sub">
       Más de dos décadas liderando proyectos de alta complejidad en el sector financiero de LATAM,
       desde la estrategia hasta la ejecución en terreno.
     </p>
   </div>
 
-  <div class="tray-tabs reveal reveal-delay-2" role="tablist" aria-label="Trayectoria por consultor">
+  <div class="tray-tabs" role="tablist" aria-label="Trayectoria por consultor">
     <button class="tray-tab active" role="tab" id="tab-federico" aria-controls="panel-federico" aria-selected="true" onclick="switchTab('federico', this)">Federico Espil</button>
     <button class="tray-tab" role="tab" id="tab-felipe" aria-controls="panel-felipe" aria-selected="false" onclick="switchTab('felipe', this)">Felipe Bongain</button>
     <button class="tray-tab" role="tab" id="tab-diego" aria-controls="panel-diego" aria-selected="false" onclick="switchTab('diego', this)">Diego Macaya</button>
@@ -889,7 +826,7 @@
   <div class="tray-panel active" id="panel-federico" role="tabpanel" aria-labelledby="tab-federico">
   <div class="timeline">
 
-    <div class="timeline-block reveal">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">Mar 2026 – Actualidad</div>
       <div class="timeline-role">PMO Senior</div>
@@ -900,7 +837,7 @@
       </div>
     </div>
 
-    <div class="timeline-block reveal reveal-delay-1">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">May 2020 – Oct 2025 · 5 años y 5 meses</div>
       <div class="timeline-role">Gerente de Consultoría</div>
@@ -920,7 +857,7 @@
       </div>
     </div>
 
-    <div class="timeline-block reveal reveal-delay-2">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">Abr 2018 – Mar 2020 · 1 año y 11 meses</div>
       <div class="timeline-role">Gerente – Financial Services Organization (FSO)</div>
@@ -932,7 +869,7 @@
       </div>
     </div>
 
-    <div class="timeline-block reveal reveal-delay-3">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">Sep 2015 – Abr 2018 · 2 años y 7 meses</div>
       <div class="timeline-role">Gerente y Consultor Senior – Technology Strategy & Architecture (TSA)</div>
@@ -945,7 +882,7 @@
       </div>
     </div>
 
-    <div class="timeline-block reveal reveal-delay-3">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">2000 – 2015</div>
       <div class="timeline-role">Roles técnicos y de liderazgo TI</div>
@@ -964,7 +901,7 @@
   <div class="tray-panel" id="panel-felipe" role="tabpanel" aria-labelledby="tab-felipe">
   <div class="timeline">
 
-    <div class="timeline-block reveal">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">Nov 2020 – Abr 2025 · 4 años y 5 meses</div>
       <div class="timeline-role">Subgerente de Transformación Digital</div>
@@ -979,7 +916,7 @@
       </div>
     </div>
 
-    <div class="timeline-block reveal reveal-delay-1">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">Ene 2019 – Oct 2020 · 1 año y 10 meses</div>
       <div class="timeline-role">Supervisor en Consultoría (Advisory)</div>
@@ -995,7 +932,7 @@
       </div>
     </div>
 
-    <div class="timeline-block reveal reveal-delay-2">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">Jun 2016 – Jun 2018 · 2 años</div>
       <div class="timeline-role">Consultor Senior – TSA</div>
@@ -1008,7 +945,7 @@
       </div>
     </div>
 
-    <div class="timeline-block reveal reveal-delay-2">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">Oct 2007 – May 2014 · 6 años y 7 meses</div>
       <div class="timeline-role">Business Analyst – AMS</div>
@@ -1022,7 +959,7 @@
       </div>
     </div>
 
-    <div class="timeline-block reveal reveal-delay-3">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">2000 – 2007</div>
       <div class="timeline-role">Roles de análisis funcional y procesos</div>
@@ -1041,7 +978,7 @@
   <div class="tray-panel" id="panel-diego" role="tabpanel" aria-labelledby="tab-diego">
   <div class="timeline">
 
-    <div class="timeline-block reveal">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">2022 – 2025</div>
       <div class="timeline-role">Consultor de Analítica y Datos / Consultor Líder</div>
@@ -1056,7 +993,7 @@
       </div>
     </div>
 
-    <div class="timeline-block reveal reveal-delay-1">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">2021 – 2022</div>
       <div class="timeline-role">Ingeniero de Proyectos</div>
@@ -1068,7 +1005,7 @@
       </div>
     </div>
 
-    <div class="timeline-block reveal reveal-delay-2">
+    <div class="timeline-block">
       <div class="timeline-dot"></div>
       <div class="timeline-period">2018 – 2021 · 3 años</div>
       <div class="timeline-role">Analista</div>
@@ -1089,16 +1026,16 @@
 <!-- CREDENCIALES -->
 <section id="credenciales">
   <div class="cred-header">
-    <div class="section-label reveal">Credenciales</div>
-    <h2 class="section-title reveal reveal-delay-1">Formación y <em>certificaciones</em></h2>
-    <p class="section-sub reveal reveal-delay-2">
-      Respaldo académico y profesional que complementa la experiencia en terreno de ambos socios.
+    <div class="section-label">Credenciales</div>
+    <h2 class="section-title">Formación y <em>certificaciones</em></h2>
+    <p class="section-sub">
+      Respaldo académico y profesional que complementa la experiencia en terreno del equipo.
     </p>
   </div>
 
   <div class="cred-grid">
 
-    <div class="reveal reveal-delay-2">
+    <div>
       <div class="cred-column-title">Formación Académica</div>
       <ul class="cred-list">
         <li class="cred-item">
@@ -1156,51 +1093,25 @@
       </ul>
     </div>
 
-    <div class="reveal reveal-delay-3">
+    <div>
       <div class="cred-column-title">Industrias</div>
-      <div class="industries-wrap">
-        <span class="industry-chip">Seguros</span>
-        <span class="industry-chip">Banca</span>
-        <span class="industry-chip">Bancaseguros</span>
-        <span class="industry-chip">AFPs / Previsión</span>
-        <span class="industry-chip">Tecnología / IT</span>
-        <span class="industry-chip">Telecomunicaciones</span>
-        <span class="industry-chip">Oil & Gas</span>
-        <span class="industry-chip">Minería</span>
-        <span class="industry-chip">Factoring</span>
-        <span class="industry-chip">Mutuales</span>
-        <span class="industry-chip">Ministerios / Gobierno</span>
-        <span class="industry-chip">Concesionarias</span>
-        <span class="industry-chip">Servicios de Seguridad</span>
-        <span class="industry-chip">Servicios Transaccionales</span>
-        <span class="industry-chip">Retail Financiero</span>
-      </div>
-
-      <div class="cred-column-title" style="margin-top: 2.5rem;">Competencias Clave</div>
-      <div class="industries-wrap">
-        <span class="industry-chip">OdT / PMO</span>
-        <span class="industry-chip">Gobierno de Proyectos</span>
-        <span class="industry-chip">Transformación Digital</span>
-        <span class="industry-chip">Estrategia Tecnológica</span>
-        <span class="industry-chip">Core de Seguros</span>
-        <span class="industry-chip">Core Bancario</span>
-        <span class="industry-chip">SAP SuccessFactors</span>
-        <span class="industry-chip">Plataformas de Distribución</span>
-        <span class="industry-chip">RFI / RFP / POC</span>
-        <span class="industry-chip">Data Governance</span>
-        <span class="industry-chip">Protección de Datos</span>
-        <span class="industry-chip">Reingeniería de Procesos</span>
-        <span class="industry-chip">UX / UC</span>
-        <span class="industry-chip">RPA / Automatización</span>
-        <span class="industry-chip">ITSM / ITIL v4</span>
-        <span class="industry-chip">Scrum / Ágiles</span>
-        <span class="industry-chip">Testing / QA</span>
-        <span class="industry-chip">IA Aplicada / RAG</span>
-        <span class="industry-chip">Power BI / Reportería</span>
-        <span class="industry-chip">SQL / ETL / Data Pipelines</span>
-        <span class="industry-chip">Gestión del Cambio (OCM)</span>
-        <span class="industry-chip">Equipos multiculturales</span>
-      </div>
+      <ul class="industries-list">
+        <li>Seguros</li>
+        <li>Banca</li>
+        <li>Bancaseguros</li>
+        <li>AFPs / Previsión</li>
+        <li>Tecnología / IT</li>
+        <li>Telecomunicaciones</li>
+        <li>Oil & Gas</li>
+        <li>Minería</li>
+        <li>Factoring</li>
+        <li>Mutuales</li>
+        <li>Ministerios / Gobierno</li>
+        <li>Concesionarias</li>
+        <li>Servicios de Seguridad</li>
+        <li>Servicios Transaccionales</li>
+        <li>Retail Financiero</li>
+      </ul>
 
     </div>
 
@@ -1210,36 +1121,36 @@
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="contact-info">
-    <div class="section-label reveal">Contacto</div>
-    <h2 class="section-title reveal reveal-delay-1">¿Listo para <em>transformar</em><br/>tu organización?</h2>
-    <p class="section-sub reveal reveal-delay-2">
+    <div class="section-label">Contacto</div>
+    <h2 class="section-title">¿Listo para <em>transformar</em><br/>tu organización?</h2>
+    <p class="section-sub">
       Contanos el desafío que estás enfrentando. Te respondemos en menos de 24 horas
       con una perspectiva inicial sin costo.
     </p>
 
     <div class="contact-items">
-      <div class="contact-item reveal reveal-delay-2">
+      <div class="contact-item">
         <div class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg></div>
         <div>
           <div class="contact-item-label">Email</div>
           <div class="contact-item-val"><a href="mailto:fespil@gmail.com">fespil@gmail.com</a> · <a href="mailto:fbongain@hotmail.com">fbongain@hotmail.com</a></div>
         </div>
       </div>
-      <div class="contact-item reveal reveal-delay-3">
+      <div class="contact-item">
         <div class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg></div>
         <div>
           <div class="contact-item-label">Teléfono / WhatsApp</div>
           <div class="contact-item-val"><a href="https://wa.me/56968344060">+56 9 6834-4060</a> (Federico) · <a href="https://wa.me/56985763453">+56 9 8576-3453</a> (Felipe)</div>
         </div>
       </div>
-      <div class="contact-item reveal reveal-delay-4">
+      <div class="contact-item">
         <div class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V4h8v3M3 12h18"/></svg></div>
         <div>
           <div class="contact-item-label">LinkedIn</div>
           <div class="contact-item-val"><a href="https://www.linkedin.com/in/federicoespil/" target="_blank">Federico Espil</a> · <a href="https://www.linkedin.com/in/felipe-bongain-755a228" target="_blank">Felipe Bongain</a> · <a href="https://www.linkedin.com/in/diego-macaya-silva/" target="_blank">Diego Macaya</a></div>
         </div>
       </div>
-      <div class="contact-item reveal reveal-delay-5">
+      <div class="contact-item">
         <div class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
         <div>
           <div class="contact-item-label">Ubicación</div>
@@ -1249,7 +1160,7 @@
     </div>
   </div>
 
-  <div class="contact-form-wrap reveal reveal-delay-2">
+  <div class="contact-form-wrap">
     <div class="contact-form">
       <div class="form-title">Hablemos.</div>
       <div class="form-row">
@@ -1351,11 +1262,12 @@
     btn.classList.add('active');
     btn.setAttribute('aria-selected', 'true');
     document.getElementById('panel-' + name).classList.add('active');
-    // Re-trigger reveal animations for newly visible elements
-    document.querySelectorAll('#panel-' + name + ' .reveal').forEach(el => {
-      observer.observe(el);
-    });
   }
+
+  // "Ver trayectoria" en cada ficha del equipo abre la pestaña de esa persona
+  document.querySelectorAll('[data-tab]').forEach(a => {
+    a.addEventListener('click', () => switchTab(a.dataset.tab, document.getElementById('tab-' + a.dataset.tab)));
+  });
 
   // Botones "Cotizar": preseleccionan el servicio en el formulario
   document.querySelectorAll('.service-quote').forEach(a => {
@@ -1364,13 +1276,6 @@
       setTimeout(() => document.getElementById('f-nombre').focus({ preventScroll: true }), 600);
     });
   });
-
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => observer.observe(el));
 
   // Form submission
   async function enviarFormulario() {
