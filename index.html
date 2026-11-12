@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Vértice Consulting · Transformación tecnológica del sector financiero LATAM</title>
-<meta name="description" content="Consultora independiente para aseguradoras, bancos y AFPs en LATAM: estrategia tecnológica, selección e implementación de plataformas Core, PMO, gobierno de datos e IA aplicada."/>
+<title>Vértice Consulting · Transformación tecnológica LATAM</title>
+<meta name="description" content="Consultora tecnológica independiente en LATAM para servicios financieros, minería, retail, telecomunicaciones y otras industrias: estrategia tecnológica, selección e implementación de plataformas, PMO, gobierno de datos e IA aplicada."/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="Vértice Consulting · Transformación tecnológica del sector financiero LATAM"/>
-<meta property="og:description" content="Desde la estrategia hasta el go-live. Selección e implementación de plataformas Core, PMO, gobierno de datos e IA para aseguradoras, bancos y AFPs."/>
+<meta property="og:title" content="Vértice Consulting · Transformación tecnológica LATAM"/>
+<meta property="og:description" content="Desde la estrategia hasta el go-live. Selección e implementación de plataformas, PMO, gobierno de datos e IA para empresas de distintas industrias en LATAM."/>
 <meta property="og:url" content="https://uncas16.github.io/vertice-consulting/"/>
 <meta property="og:locale" content="es_CL"/>
 <link rel="alternate" hreflang="es" href="https://uncas16.github.io/vertice-consulting/"/>
@@ -162,6 +162,15 @@
   .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); }
 
   /* ── HERO ── */
+  #hero, #resultados, #contacto { position: relative; isolation: isolate; }
+  .bg-art {
+    position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background-color: var(--accent);
+    -webkit-mask: var(--art) center / cover no-repeat; mask: var(--art) center / cover no-repeat;
+  }
+  #hero .bg-art { --art: url("img/fondo-relieve.svg"); opacity: 0.16; }
+  #contacto .bg-art { --art: url("img/fondo-relieve-2.svg"); opacity: 0.12; }
+  #resultados .bg-art { --art: url("img/fondo-red.svg"); background-color: var(--accent-lt); opacity: 0.14; }
   #hero {
     background: var(--paper);
     padding: 12.5rem var(--wrap) 5rem;
@@ -575,12 +584,12 @@
 
 <!-- HERO -->
 <section id="hero">
+  <div class="bg-art" aria-hidden="true"></div>
   <div class="hero-left">
-    <div class="hero-tag">Consultoría tecnológica · Sector financiero LATAM</div>
+    <div class="hero-tag">Consultoría tecnológica · LATAM</div>
     <h1 class="hero-title">Transformación <em>real</em>, desde la estrategia hasta el go-live.</h1>
     <p class="hero-sub">
-      Acompañamos a aseguradoras, bancos, bancaseguros y AFPs en LATAM en la selección e implementación
-      de plataformas Core, gobierno de datos y gestión de programas de cambio. Sin contratos con fabricantes de software.
+      Acompañamos a empresas de servicios financieros, minería, retail, telecomunicaciones y otras industrias en LATAM en la selección e implementación de plataformas, gobierno de datos y gestión de programas de cambio. Sin contratos con fabricantes de software.
     </p>
     <div class="hero-actions">
       <a href="#contacto" class="btn-primary">Hablemos de tu proyecto →</a>
@@ -591,7 +600,7 @@
   <div class="hero-right">
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num">20+</div>
+        <div class="hero-stat-num">Más de 20</div>
         <div class="hero-stat-label">años de experiencia en tecnología y consultoría</div>
       </div>
       <div class="hero-stat">
@@ -659,8 +668,7 @@
 <div class="service-card">
       <div class="service-title">Transformación Digital</div>
       <div class="service-desc">
-        Diagnóstico de madurez digital, hoja de ruta estratégica, gestión del cambio y acompañamiento
-        en ejecución para el sector financiero en LATAM.
+        Diagnóstico de madurez digital, hoja de ruta estratégica, gestión del cambio y acompañamiento en la ejecución.
       </div>
       <a href="#contacto" class="service-quote" data-servicio="Transformación Digital">Cotizar este servicio →</a>
     </div>
@@ -794,6 +802,7 @@
 
 <!-- RESULTADOS -->
 <section id="resultados">
+  <div class="bg-art" aria-hidden="true"></div>
   <div class="section-label">Resultados</div>
   <h2 class="section-title">Experiencia medida en proyectos reales</h2>
   <div class="results-grid">
@@ -840,7 +849,7 @@
           <div class="pillar-num">01</div>
           <div>
             <div class="pillar-title">Especialización sectorial</div>
-            <div class="pillar-desc">Foco en seguros, banca, bancaseguros, AFPs y sector financiero. Conocemos cada industria de adentro.</div>
+            <div class="pillar-desc">Experiencia en seguros, banca, AFPs, minería, retail, telecomunicaciones y sector público. Conocemos cada industria de adentro.</div>
           </div>
         </div>
         <div class="pillar">
@@ -872,13 +881,10 @@
     <div class="section-label">Quiénes somos</div>
     <h2 class="section-title">Consultoría <em>boutique</em>,<br/>conocimiento profundo.</h2>
     <blockquote class="nosotros-quote">
-      “Combinamos visión estratégica con ejecución práctica y conocimiento real de la industria financiera en LATAM.”
+      “Combinamos visión estratégica con ejecución práctica y conocimiento real de las industrias de LATAM.”
     </blockquote>
     <p class="section-sub">
-      Vértice Consulting reúne a cuatro consultores con amplia experiencia
-      en transformación tecnológica del sector financiero. Formados en firmas como EY, Deloitte, KPMG, IBM y HP,
-      hemos liderado proyectos de implementación de Core, selección de plataformas, Data Governance, PMOs,
-      oficinas de transformación, analítica avanzada e IA aplicada en aseguradoras, bancos, AFPs y bancaseguros en toda la región.
+      Vértice Consulting reúne a cuatro consultores con amplia experiencia en transformación tecnológica. Formados en firmas como EY, Deloitte, KPMG, IBM y HP, hemos liderado proyectos de implementación de Core, selección de plataformas, SAP, Data Governance, PMOs, oficinas de transformación, analítica avanzada e IA aplicada en aseguradoras, bancos, AFPs, minería, retail y telecomunicaciones en toda la región.
     </p>
     <div style="margin-top:2rem;">
       <a href="#equipo" class="btn-primary">Conocer al equipo →</a>
@@ -893,11 +899,11 @@
   <div class="mv-grid">
     <div class="mv-item">
       <h3>Misión</h3>
-      <p>Acompañamos a instituciones financieras en sus decisiones y proyectos tecnológicos críticos (selección e implementación de sistemas core, gestión de programas y PMO, transformación y migración a la nube) con un equipo senior que combina experiencia del negocio financiero y dominio técnico, independiente de proveedores y comprometido con dejar capacidades instaladas en cada cliente.</p>
+      <p>Acompañamos a organizaciones de sectores exigentes, como banca, seguros, minería e industria, en sus decisiones y proyectos tecnológicos críticos (selección e implementación de sistemas core y ERP como SAP, gestión de programas y PMO, gestión del cambio, transformación y migración a la nube) con un equipo senior que combina conocimiento del negocio y dominio técnico, independiente de proveedores y comprometido con dejar capacidades instaladas en cada cliente.</p>
     </div>
     <div class="mv-item">
       <h3>Visión</h3>
-      <p>Ser la consultora de referencia en Latinoamérica para que bancos, aseguradoras e instituciones financieras transformen su tecnología con certeza: proyectos que llegan a puerto, en plazo y con el valor prometido.</p>
+      <p>Ser la consultora de referencia en Latinoamérica para que las organizaciones transformen su tecnología y su operación con certeza: proyectos que llegan a puerto, en plazo y con el valor prometido.</p>
     </div>
   </div>
   <h3 class="values-title">Nuestros valores</h3>
@@ -916,8 +922,7 @@
     <div class="section-label">Nuestro equipo</div>
     <h2 class="section-title">Cuatro consultores,<br/><em>una visión</em> compartida.</h2>
     <p class="section-sub">
-      Formados en las principales firmas de consultoría global, con amplia experiencia
-      liderando proyectos de alta complejidad en el sector financiero de LATAM.
+      Formados en las principales firmas de consultoría global, con amplia experiencia liderando proyectos de alta complejidad en distintas industrias de LATAM.
     </p>
   </div>
 
@@ -949,7 +954,7 @@
       <div class="equipo-name">Felipe Bongain</div>
       <div class="equipo-role">Ing. Civil Industrial & Ing. Ejecución Química</div>
       <div class="equipo-bio">
-        +20 años en implementación de proyectos TI y buenas prácticas. Especialista en reingeniería
+        Más de 20 años en implementación de proyectos TI y buenas prácticas. Especialista en reingeniería
         de procesos, data governance, protección de datos personales, UX/UC, testing y gestión del cambio.
         Experiencia en Seguros, Banca, AFPs, TELCO, mutuales y servicios de seguridad.
       </div>
@@ -981,7 +986,7 @@
     </div>
 
     <div class="equipo-card">
-      <div class="equipo-photo equipo-initials" aria-hidden="true">MC</div>
+      <img class="equipo-photo" src="img/martin-de-paul.jpg" alt="Martín de Paul Cortés" width="96" height="96" loading="lazy"/>
       <div class="equipo-name">Martín de Paul Cortés</div>
       <div class="equipo-role">Ingeniero Mecatrónico · Consultor SAP PM</div>
       <div class="equipo-bio">
@@ -994,7 +999,7 @@
         <span class="equipo-firm">GMN Group</span>
         <span class="equipo-firm">Halliburton</span>
       </div>
-      <div class="equipo-links"><a href="#trayectoria" class="equipo-linkedin" data-tab="martin">Ver trayectoria →</a></div>
+      <div class="equipo-links"><a href="#trayectoria" class="equipo-linkedin" data-tab="martin">Ver trayectoria →</a><a href="https://www.linkedin.com/in/martin-de-paul-cortes-alonso-108b8482/" target="_blank" rel="noopener" class="equipo-linkedin">LinkedIn →</a></div>
     </div>
 
   </div>
@@ -1006,8 +1011,7 @@
     <div class="section-label">Trayectoria</div>
     <h2 class="section-title">Experiencia que <em>respalda</em><br/>cada recomendación.</h2>
     <p class="section-sub">
-      Más de dos décadas liderando proyectos de alta complejidad en el sector financiero de LATAM,
-      desde la estrategia hasta la ejecución en terreno.
+      Más de dos décadas liderando proyectos de alta complejidad en distintas industrias de LATAM, desde la estrategia hasta la ejecución en terreno.
     </p>
   </div>
 
@@ -1385,6 +1389,7 @@
 
 <!-- CONTACTO -->
 <section id="contacto">
+  <div class="bg-art" aria-hidden="true"></div>
   <div class="contact-info">
     <div class="section-label">Contacto</div>
     <h2 class="section-title">¿Listo para <em>transformar</em><br/>tu organización?</h2>
@@ -1412,7 +1417,7 @@
         <div class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V4h8v3M3 12h18"/></svg></div>
         <div>
           <div class="contact-item-label">LinkedIn</div>
-          <div class="contact-item-val"><a href="https://www.linkedin.com/in/federicoespil/" target="_blank">Federico Espil</a> · <a href="https://www.linkedin.com/in/felipe-bongain-755a228" target="_blank">Felipe Bongain</a> · <a href="https://www.linkedin.com/in/diego-macaya-silva/" target="_blank">Diego Macaya</a></div>
+          <div class="contact-item-val"><a href="https://www.linkedin.com/in/federicoespil/" target="_blank">Federico Espil</a> · <a href="https://www.linkedin.com/in/felipe-bongain-755a228" target="_blank">Felipe Bongain</a> · <a href="https://www.linkedin.com/in/diego-macaya-silva/" target="_blank">Diego Macaya</a> · <a href="https://www.linkedin.com/in/martin-de-paul-cortes-alonso-108b8482/" target="_blank">Martín de Paul</a></div>
         </div>
       </div>
       <div class="contact-item">
@@ -1475,16 +1480,14 @@
 <footer>
   <div>
     <div class="footer-logo">Vértice <span>Consulting</span></div>
-    <div class="footer-tagline">Especialistas en Transformación Tecnológica del Sector Financiero LATAM</div>
+    <div class="footer-tagline">Especialistas en Transformación Tecnológica LATAM</div>
   </div>
   <div class="footer-links">
-    <a href="#hero">Inicio</a>
     <a href="#servicios">Servicios</a>
-    <a href="#como-trabajamos">Cómo trabajamos</a>
     <a href="#nosotros">Nosotros</a>
     <a href="#equipo">Equipo</a>
     <a href="#trayectoria">Trayectoria</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#contacto">Hablemos</a>
   </div>
   <div class="social footer-social"><span class="social-icon" role="img" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></span><span class="social-icon" role="img" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></span><span class="social-icon" role="img" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></span><span class="social-icon" role="img" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></span></div>
   <div class="footer-copy">© 2026 Vértice Consulting · Santiago, Chile</div>
