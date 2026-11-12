@@ -163,6 +163,15 @@
   .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); }
 
   /* ── HERO ── */
+  #hero, #resultados, #contacto { position: relative; isolation: isolate; }
+  .bg-art {
+    position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background-color: var(--accent);
+    -webkit-mask: var(--art) center / cover no-repeat; mask: var(--art) center / cover no-repeat;
+  }
+  #hero .bg-art { --art: url("../img/fondo-relieve.svg"); opacity: 0.16; }
+  #contacto .bg-art { --art: url("../img/fondo-relieve-2.svg"); opacity: 0.12; }
+  #resultados .bg-art { --art: url("../img/fondo-red.svg"); background-color: var(--accent-lt); opacity: 0.14; }
   #hero {
     background: var(--paper);
     padding: 12.5rem var(--wrap) 5rem;
@@ -576,6 +585,7 @@
 
 <!-- HERO -->
 <section id="hero">
+  <div class="bg-art" aria-hidden="true"></div>
   <div class="hero-left">
     <div class="hero-tag">Technology consulting · LATAM</div>
     <h1 class="hero-title">Real <em>transformation</em>, from strategy to go-live.</h1>
@@ -781,6 +791,7 @@
 
 <!-- RESULTADOS -->
 <section id="resultados">
+  <div class="bg-art" aria-hidden="true"></div>
   <div class="section-label">Results</div>
   <h2 class="section-title">Experience measured in real projects</h2>
   <div class="results-grid">
@@ -1356,6 +1367,7 @@
 
 <!-- CONTACTO -->
 <section id="contacto">
+  <div class="bg-art" aria-hidden="true"></div>
   <div class="contact-info">
     <div class="section-label">Contact</div>
     <h2 class="section-title">Ready to <em>transform</em><br/>your organization?</h2>

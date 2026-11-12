@@ -76,6 +76,7 @@ def build(lang, idx):
     s = s.replace('content="es_CL"', 'content="' + {'en': 'en_US', 'pt': 'pt_BR'}[code] + '"', 1)
     s = s.replace(f'<meta property="og:url" content="{BASE}"/>', f'<meta property="og:url" content="{BASE}{code}/"/>', 1)
     s = s.replace('src="img/', 'src="../img/')
+    s = s.replace('url("img/', 'url("../img/')
     s = s.replace('<a href="./" lang="es" aria-current="page">ES</a><a href="en/" lang="en">EN</a><a href="pt/" lang="pt">PT</a>',
         '<a href="../" lang="es">ES</a><a href="../en/" lang="en"' + (' aria-current="page"' if code == 'en' else '') + '>EN</a><a href="../pt/" lang="pt"' + (' aria-current="page"' if code == 'pt' else '') + '>PT</a>')
     wa = {'en': 'Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20consulting%20services.',
