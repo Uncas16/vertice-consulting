@@ -316,6 +316,7 @@
   }
   .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(15, 94, 82, 0.15); }
   .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group .req { color: var(--accent); }
   .form-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
   .form-submit {
     width: 100%; padding: 1rem; background: var(--accent); color: var(--white);
@@ -382,7 +383,7 @@
     #nosotros, #contacto, .cred-grid { gap: 3rem; }
   }
   @media (max-width: 768px) {
-    nav { padding-block: 0.8rem; }
+    nav { padding-block: 0.8rem; backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--paper); }
     .nav-logo { font-size: 1.2rem; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
@@ -430,14 +431,14 @@
 <!-- NAV -->
 <nav id="nav">
   <a href="#hero" class="nav-logo" aria-label="Vértice Consulting, inicio"><svg width="28" height="24" viewBox="0 0 30 26" aria-hidden="true"><path d="M15 2 L28 24 H2 Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="15" cy="2.6" r="2.6" fill="#0F5E52"/></svg>Vértice <span>Consulting</span></a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#equipo">Equipo</a></li>
     <li><a href="#trayectoria">Trayectoria</a></li>
     <li><a href="#contacto" class="nav-cta">Hablemos</a></li>
   </ul>
-  <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')" aria-label="Menú">
+  <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -879,13 +880,13 @@
     </p>
   </div>
 
-  <div class="tray-tabs reveal reveal-delay-2">
-    <button class="tray-tab active" onclick="switchTab('federico', this)">Federico Espil</button>
-    <button class="tray-tab" onclick="switchTab('felipe', this)">Felipe Bongain</button>
-    <button class="tray-tab" onclick="switchTab('diego', this)">Diego Macaya</button>
+  <div class="tray-tabs reveal reveal-delay-2" role="tablist" aria-label="Trayectoria por consultor">
+    <button class="tray-tab active" role="tab" id="tab-federico" aria-controls="panel-federico" aria-selected="true" onclick="switchTab('federico', this)">Federico Espil</button>
+    <button class="tray-tab" role="tab" id="tab-felipe" aria-controls="panel-felipe" aria-selected="false" onclick="switchTab('felipe', this)">Felipe Bongain</button>
+    <button class="tray-tab" role="tab" id="tab-diego" aria-controls="panel-diego" aria-selected="false" onclick="switchTab('diego', this)">Diego Macaya</button>
   </div>
 
-  <div class="tray-panel active" id="panel-federico">
+  <div class="tray-panel active" id="panel-federico" role="tabpanel" aria-labelledby="tab-federico">
   <div class="timeline">
 
     <div class="timeline-block reveal">
@@ -960,7 +961,7 @@
   </div>
   </div>
 
-  <div class="tray-panel" id="panel-felipe">
+  <div class="tray-panel" id="panel-felipe" role="tabpanel" aria-labelledby="tab-felipe">
   <div class="timeline">
 
     <div class="timeline-block reveal">
@@ -1037,7 +1038,7 @@
   </div>
   </div>
 
-  <div class="tray-panel" id="panel-diego">
+  <div class="tray-panel" id="panel-diego" role="tabpanel" aria-labelledby="tab-diego">
   <div class="timeline">
 
     <div class="timeline-block reveal">
@@ -1253,7 +1254,7 @@
       <div class="form-title">Hablemos.</div>
       <div class="form-row">
         <div class="form-group">
-          <label for="f-nombre">Nombre</label>
+          <label for="f-nombre">Nombre <span class="req" aria-hidden="true">*</span></label>
           <input type="text" id="f-nombre" placeholder="Tu nombre" required/>
         </div>
         <div class="form-group">
@@ -1262,7 +1263,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="f-email">Email</label>
+        <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
         <input type="email" id="f-email" placeholder="tu@empresa.com" required/>
       </div>
       <div class="form-group">
@@ -1287,7 +1288,7 @@
         <textarea id="f-mensaje" placeholder="Contanos brevemente el desafío que estás enfrentando..."></textarea>
       </div>
       <button class="form-submit" id="f-submit" onclick="enviarFormulario()">Enviar mensaje →</button>
-      <div class="form-status" id="f-status"></div>
+      <div class="form-status" id="f-status" role="status" aria-live="polite"></div>
     </div>
   </div>
 </section>
@@ -1327,22 +1328,28 @@
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // Mobile menu: close when a link is tapped
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.remove('mobile-open');
-    });
-  });
-  // Close mobile menu when clicking the overlay background
-  document.querySelector('.nav-links').addEventListener('click', function(e) {
-    if (e.target === this) this.classList.remove('mobile-open');
+  // Menú móvil
+  const navLinks = document.getElementById('nav-links');
+  const burger = document.querySelector('.nav-hamburger');
+  function setMenu(open) {
+    navLinks.classList.toggle('mobile-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', () => setMenu(!navLinks.classList.contains('mobile-open')));
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+  navLinks.addEventListener('click', e => { if (e.target === navLinks) setMenu(false); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) { setMenu(false); burger.focus(); }
   });
 
   // Trayectoria tabs
   function switchTab(name, btn) {
-    document.querySelectorAll('.tray-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tray-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
     document.querySelectorAll('.tray-panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
     document.getElementById('panel-' + name).classList.add('active');
     // Re-trigger reveal animations for newly visible elements
     document.querySelectorAll('#panel-' + name + ' .reveal').forEach(el => {
