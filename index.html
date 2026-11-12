@@ -250,6 +250,9 @@
   .service-desc { font-size: 0.95rem; color: #3D4B5C; margin-bottom: 1rem; }
   .service-tags { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; }
   .service-tag { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+  .service-list { list-style: none; margin: -0.25rem 0 0.5rem; }
+  .service-list li { position: relative; padding: 0.2rem 0 0.2rem 0.9rem; font-size: 0.92rem; color: #3D4B5C; line-height: 1.45; }
+  .service-list li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 0.4rem; height: 1px; background: var(--accent); }
   .service-desc strong { color: var(--ink); font-weight: 600; }
   .service-quote {
     align-self: flex-start; margin-top: 0.75rem; padding: 0.35rem 0;
@@ -515,7 +518,7 @@
       <div class="section-label">Lo que hacemos</div>
       <h2 class="section-title">Cuatro frentes para <em>transformar</em> tu organización</h2>
     </div>
-    <p class="section-sub">Diez líneas de servicio, agrupadas según el problema que resuelven.</p>
+    <p class="section-sub">Once líneas de servicio, agrupadas según el problema que resuelven.</p>
   </div>
 
   <div class="service-group">
@@ -601,11 +604,23 @@
         Cursos y talleres en gestión de proyectos, ITIL v4, metodologías ágiles,
         transformación digital e industria financiera. Habilitados para franquicia SENCE en Chile.
       </div>
-      <div class="service-desc">
-        <strong>Para OTEC:</strong> codificación de cursos SENCE, implementación de campus virtual (LMS Moodle),
-        desarrollo de cursos e-learning y material pedagógico, y auditoría interna NCh 2728.
-      </div>
       <a href="#contacto" class="service-quote" data-servicio="Capacitación &amp; Formación">Cotizar este servicio →</a>
+    </div>
+<div class="service-card">
+      <div class="service-title">Asesoría a OTEC</div>
+      <div class="service-desc">
+        Acompañamos a Organismos Técnicos de Capacitación en toda su operación:
+      </div>
+      <ul class="service-list">
+        <li>Codificación de cursos SENCE</li>
+        <li>Comunicación y liquidación de cursos SENCE</li>
+        <li>Postulación a licitaciones (Mercado Público, SENCE y OTIC)</li>
+        <li>Auditoría interna NCh 2728:2015</li>
+        <li>Implementación de LMS (Moodle)</li>
+        <li>Cursos e-learning y material pedagógico</li>
+        <li>Sitio web, email marketing y prospección comercial</li>
+      </ul>
+      <a href="#contacto" class="service-quote" data-servicio="Asesoría a OTEC">Cotizar este servicio →</a>
     </div>
 
     </div>
@@ -1200,6 +1215,7 @@
           <option>Protección de Datos Personales</option>
           <option>Analítica, IA & Reportería</option>
           <option>Capacitación & Formación</option>
+          <option>Asesoría a OTEC</option>
           <option>No lo tengo claro aún</option>
         </select>
       </div>
