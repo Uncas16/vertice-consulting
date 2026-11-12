@@ -241,6 +241,12 @@
   .service-desc { font-size: 0.95rem; color: #3D4B5C; margin-bottom: 1rem; }
   .service-tags { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; }
   .service-tag { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+  .service-desc strong { color: var(--ink); font-weight: 600; }
+  .service-quote {
+    display: inline-block; margin-top: 1rem; font-size: 0.88rem; font-weight: 600;
+    color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px;
+  }
+  .service-quote:hover { color: var(--accent); }
 
   /* ── RESULTADOS ── */
   #resultados { background: var(--ink); color: var(--white); padding-block: 5rem; }
@@ -255,6 +261,17 @@
   .result-num { font-family: var(--serif); font-size: 3rem; line-height: 1; color: var(--accent-lt); margin-bottom: 0.6rem; font-variant-numeric: tabular-nums; }
   .result-text { font-size: 1rem; color: #D5DCE4; }
   .result-where { font-size: 0.82rem; color: #9AA8B8; margin-top: 0.5rem; letter-spacing: 0.04em; }
+
+  /* ── CÓMO TRABAJAMOS ── */
+  #como-trabajamos { background: var(--paper); border-bottom: 1px solid var(--line); }
+  .approach-grid {
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin-top: 2rem; border-top: 1px solid var(--ink);
+  }
+  .approach-item { padding: 1.5rem 1.5rem 0 0; }
+  .approach-item + .approach-item { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+  .approach-item h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; line-height: 1.25; margin-bottom: 0.5rem; }
+  .approach-item p { font-size: 0.93rem; color: var(--muted); }
 
   /* ── CREDENCIALES ── */
   #credenciales { background: var(--white); }
@@ -360,6 +377,8 @@
     #hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 8rem; }
     .hero-stats { max-width: 520px; }
     .service-group { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .approach-item, .approach-item + .approach-item { padding: 1.5rem 1.5rem 1rem 0; border-left: none; }
     #nosotros, #contacto, .cred-grid { gap: 3rem; }
   }
   @media (max-width: 768px) {
@@ -384,7 +403,8 @@
 
     #nosotros, #contacto, .cred-grid { grid-template-columns: 1fr; }
     .nosotros-visual { order: 0; }
-    .equipo-grid, .results-grid { grid-template-columns: 1fr; }
+    .equipo-grid, .results-grid, .approach-grid { grid-template-columns: 1fr; }
+    .approach-item + .approach-item { border-top: 1px solid var(--line); }
     .equipo-card, .equipo-card + .equipo-card { padding: 1.75rem 0; border-left: none; }
     .equipo-card + .equipo-card { border-top: 1px solid var(--line); }
     .result, .result + .result { padding: 1.5rem 0; border-left: none; }
@@ -502,6 +522,7 @@
         <span class="service-tag">Gobierno</span>
         <span class="service-tag">Roadmap</span>
       </div>
+      <a href="#contacto" class="service-quote" data-servicio="Estrategia Tecnológica">Cotizar este servicio →</a>
     </div>
 <div class="service-card">
       <div class="service-title">Transformación Digital</div>
@@ -515,6 +536,7 @@
         <span class="service-tag">Ejecución</span>
         <span class="service-tag">Cambio</span>
       </div>
+      <a href="#contacto" class="service-quote" data-servicio="Transformación Digital">Cotizar este servicio →</a>
     </div>
 <div class="service-card">
       <div class="service-title">Reingeniería de Procesos</div>
@@ -528,6 +550,7 @@
         <span class="service-tag">UX / UC</span>
         <span class="service-tag">E2E</span>
       </div>
+      <a href="#contacto" class="service-quote" data-servicio="Reingeniería de Procesos">Cotizar este servicio →</a>
     </div>
 
     </div>
@@ -551,6 +574,7 @@
         <span class="service-tag">POC</span>
         <span class="service-tag">Demos</span>
       </div>
+      <a href="#contacto" class="service-quote" data-servicio="Selección de Plataformas (RFI/RFP/POC)">Cotizar este servicio →</a>
     </div>
 <div class="service-card">
       <div class="service-title">Implementación de Plataformas</div>
@@ -564,6 +588,7 @@
         <span class="service-tag">Migración</span>
         <span class="service-tag">Testing</span>
       </div>
+      <a href="#contacto" class="service-quote" data-servicio="Implementación de Plataformas">Cotizar este servicio →</a>
     </div>
 
     </div>
@@ -587,6 +612,7 @@
         <span class="service-tag">Portafolio</span>
         <span class="service-tag">Reporting</span>
       </div>
+      <a href="#contacto" class="service-quote" data-servicio="PMO / Oficina de Transformación">Cotizar este servicio →</a>
     </div>
 <div class="service-card">
       <div class="service-title">Capacitación & Formación</div>
@@ -594,12 +620,19 @@
         Cursos y talleres en gestión de proyectos, ITIL v4, metodologías ágiles,
         transformación digital e industria financiera. Habilitados para franquicia SENCE en Chile.
       </div>
+      <div class="service-desc">
+        <strong>Para OTEC:</strong> codificación de cursos SENCE, implementación de campus virtual (LMS Moodle),
+        desarrollo de cursos e-learning y material pedagógico, y auditoría interna NCh 2728.
+      </div>
       <div class="service-tags">
         <span class="service-tag">ITIL v4</span>
         <span class="service-tag">Scrum</span>
         <span class="service-tag">SENCE</span>
         <span class="service-tag">PMBOK</span>
+        <span class="service-tag">OTEC</span>
+        <span class="service-tag">LMS</span>
       </div>
+      <a href="#contacto" class="service-quote" data-servicio="Capacitación &amp; Formación">Cotizar este servicio →</a>
     </div>
 
     </div>
@@ -623,6 +656,7 @@
         <span class="service-tag">Calidad</span>
         <span class="service-tag">KPIs</span>
       </div>
+      <a href="#contacto" class="service-quote" data-servicio="Data Governance">Cotizar este servicio →</a>
     </div>
 <div class="service-card">
       <div class="service-title">Protección de Datos Personales</div>
@@ -636,6 +670,7 @@
         <span class="service-tag">Compliance</span>
         <span class="service-tag">Roadmap</span>
       </div>
+      <a href="#contacto" class="service-quote" data-servicio="Protección de Datos Personales">Cotizar este servicio →</a>
     </div>
 <div class="service-card">
       <div class="service-title">Analítica, IA & Reportería</div>
@@ -650,6 +685,7 @@
         <span class="service-tag">RAG</span>
         <span class="service-tag">ETL</span>
       </div>
+      <a href="#contacto" class="service-quote" data-servicio="Analítica, IA &amp; Reportería">Cotizar este servicio →</a>
     </div>
 
     </div>
@@ -675,6 +711,34 @@
       <div class="result-num">85%+</div>
       <div class="result-text">de mejora en auditorías con reportería en Power BI implementada para tres clientes.</div>
       <div class="result-where">Analítica y reportería · LATAM</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO TRABAJAMOS -->
+<section id="como-trabajamos">
+  <div class="section-label reveal">Cómo trabajamos</div>
+  <h2 class="section-title reveal reveal-delay-1">Un método simple, de la estrategia a la <em>ejecución</em></h2>
+  <div class="approach-grid">
+    <div class="approach-item reveal">
+      <h3>Diagnóstico claro</h3>
+      <p>Entendemos el negocio, los procesos y la tecnología actual antes de proponer. Partimos con un diagnóstico acotado y concreto.</p>
+    </div>
+    <div class="approach-item reveal reveal-delay-1">
+      <h3>Soluciones aterrizadas</h3>
+      <p>Recomendaciones que se pueden ejecutar con los recursos, plazos y regulación reales de tu organización.</p>
+    </div>
+    <div class="approach-item reveal reveal-delay-2">
+      <h3>Acompañamiento en la implementación</h3>
+      <p>No entregamos un informe y nos vamos: trabajamos con tus equipos hasta el go-live.</p>
+    </div>
+    <div class="approach-item reveal reveal-delay-3">
+      <h3>Visión integral</h3>
+      <p>Estrategia, procesos, plataformas, datos y personas en un mismo plan, sin silos.</p>
+    </div>
+    <div class="approach-item reveal reveal-delay-4">
+      <h3>Compromiso con resultados</h3>
+      <p>Definimos indicadores desde el inicio y reportamos avances de forma ejecutiva.</p>
     </div>
   </div>
 </section>
@@ -1231,6 +1295,7 @@
   <div class="footer-links">
     <a href="#hero">Inicio</a>
     <a href="#servicios">Servicios</a>
+    <a href="#como-trabajamos">Cómo trabajamos</a>
     <a href="#nosotros">Nosotros</a>
     <a href="#equipo">Equipo</a>
     <a href="#trayectoria">Trayectoria</a>
@@ -1278,6 +1343,14 @@
       observer.observe(el);
     });
   }
+
+  // Botones "Cotizar": preseleccionan el servicio en el formulario
+  document.querySelectorAll('.service-quote').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('f-servicio').value = a.dataset.servicio;
+      setTimeout(() => document.getElementById('f-nombre').focus({ preventScroll: true }), 600);
+    });
+  });
 
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
