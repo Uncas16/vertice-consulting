@@ -1,5 +1,8 @@
 # es -> (en, pt)
 T = {
+"Especialistas en Transformación Tecnológica LATAM": ("Technology transformation specialists · LATAM", "Especialistas em transformação tecnológica · América Latina"),
+"Vértice Consulting · Transformación tecnológica LATAM": ("Vértice Consulting · Technology transformation LATAM", "Vértice Consulting · Transformação tecnológica na América Latina"),
+"Consultoría tecnológica · LATAM": ("Technology consulting · LATAM", "Consultoria tecnológica · América Latina"),
 "Servicios": ("Services", "Serviços"),
 "Nosotros": ("About", "Sobre nós"),
 "Equipo": ("Team", "Equipe"),
