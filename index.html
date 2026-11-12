@@ -182,6 +182,11 @@
   }
   .equipo-card { padding: 2rem 2rem 2rem 0; display: flex; flex-direction: column; gap: 0.6rem; }
   .equipo-card + .equipo-card { padding-left: 2rem; border-left: 1px solid var(--line); }
+  .equipo-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 0.6rem; background: var(--paper-2); }
+  .equipo-initials {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 1.9rem; color: var(--accent); border: 1px solid var(--line);
+  }
   .equipo-name { font-family: var(--serif); font-size: 1.6rem; font-weight: 600; line-height: 1.2; }
   .equipo-role { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
   .equipo-bio { font-size: 0.95rem; color: var(--muted); flex-grow: 1; }
@@ -751,13 +756,15 @@
   <div class="equipo-grid">
 
     <div class="equipo-card">
+      <img class="equipo-photo" src="img/federico-espil.jpg" alt="Federico Espil" width="96" height="96" loading="lazy"/>
       <div class="equipo-name">Federico Espil</div>
-      <div class="equipo-role">Ingeniero en Informática</div>
+      <div class="equipo-role">Ingeniero en Informática · TMO · PMO</div>
       <div class="equipo-bio">
-        +20 años en tecnología y consultoría. Especialista en TMO, PMO, gestión de programas y transformación digital
-        en seguros, banca y bancaseguros en 8 países de LATAM. Ha liderado selección (RFI, RFP, POC), GAP Analysis
-        e implementación de Core de Seguros y plataformas de distribución, y hoy conduce rollout y gestión del cambio
-        en implementaciones SAP SuccessFactors.
+        Más de 20 años en tecnología y consultoría. Especialista en TMO, PMO, gestión de programas y transformación
+        digital en seguros, banca y bancaseguros, en ocho países de LATAM. Ha liderado la selección (RFI, RFP y POC),
+        el GAP Analysis, el diseño y la implementación de sistemas Core de Seguros y plataformas de distribución,
+        además de oficinas de transformación. Hoy lidera el rollout y la gestión del cambio de SAP SuccessFactors
+        en una minera del litio.
       </div>
       <div class="equipo-firms">
         <span class="equipo-firm">EY</span>
@@ -770,6 +777,7 @@
     </div>
 
     <div class="equipo-card">
+      <img class="equipo-photo" src="img/felipe-bongain.jpg" alt="Felipe Bongain" width="96" height="96" loading="lazy"/>
       <div class="equipo-name">Felipe Bongain</div>
       <div class="equipo-role">Ing. Civil Industrial & Ing. Ejecución Química</div>
       <div class="equipo-bio">
@@ -788,6 +796,7 @@
     </div>
 
     <div class="equipo-card">
+      <img class="equipo-photo" src="img/diego-macaya.jpg" alt="Diego Macaya" width="96" height="96" loading="lazy"/>
       <div class="equipo-name">Diego Macaya</div>
       <div class="equipo-role">Ingeniero Comercial · Data Science</div>
       <div class="equipo-bio">
