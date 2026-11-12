@@ -271,11 +271,11 @@
   #equipo { background: var(--paper); }
   .equipo-header { margin-bottom: 3rem; }
   .equipo-grid {
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
     border-top: 1px solid var(--ink);
   }
-  .equipo-card { padding: 2rem 2rem 2rem 0; display: flex; flex-direction: column; gap: 0.6rem; }
-  .equipo-card + .equipo-card { padding-left: 2rem; border-left: 1px solid var(--line); }
+  .equipo-card { padding: 2rem 2.5rem 2rem 0; display: flex; flex-direction: column; gap: 0.6rem; border-bottom: 1px solid var(--line); }
+  .equipo-card:nth-child(even) { padding: 2rem 0 2rem 2.5rem; border-left: 1px solid var(--line); }
   .equipo-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 0.6rem; background: var(--paper-2); }
   .equipo-initials {
     display: flex; align-items: center; justify-content: center;
@@ -533,8 +533,7 @@
     .mv-item + .mv-item { border-top: 1px solid var(--rule); }
     .mv-item p { font-size: 1.15rem; }
     .values-list li + li { border-top: 1px solid var(--rule); }
-    .equipo-card, .equipo-card + .equipo-card { padding: 1.75rem 0; border-left: none; }
-    .equipo-card + .equipo-card { border-top: 1px solid var(--line); }
+    .equipo-card, .equipo-card:nth-child(even) { padding: 1.75rem 0; border-left: none; }
     .result, .result + .result { padding: 1.5rem 0; border-left: none; }
     .result + .result { border-top: 1px solid rgba(255, 255, 255, 0.15); }
     .service-card, .service-card + .service-card, .service-card:nth-child(3) { padding: 0 0 1.25rem; border-left: none; grid-column: auto; }
@@ -626,6 +625,9 @@
     <li>Pacífico Salud</li>
     <li>Banistmo</li>
     <li>Entel</li>
+    <li>Codelco</li>
+    <li>Minera Escondida</li>
+    <li>Glencore</li>
   </ul>
 </div>
 
@@ -636,7 +638,7 @@
       <div class="section-label">What we do</div>
       <h2 class="section-title">Four fronts to <em>transform</em> your organization</h2>
     </div>
-    <p class="section-sub">Eleven service lines, grouped by the problem they solve.</p>
+    <p class="section-sub">Twelve service lines, grouped by the problem they solve.</p>
   </div>
 
   <div class="service-group">
@@ -675,7 +677,7 @@
     <div class="service-group-head">
       <span class="group-num">02</span>
       <h3>Core Platforms</h3>
-      <p>Choose the right platform and implement it through go-live.</p>
+      <p>Choose the right platform, implement it through go-live and get value from it in operations.</p>
     </div>
     <div class="services-grid">
     <div class="service-card">
@@ -691,6 +693,13 @@
         Project management for insurance core, core banking and distribution platform implementations, from GAP analysis and functional design to go-live and portfolio migration.
       </div>
       <a href="#contacto" class="service-quote" data-servicio="Platform Implementation">Request a quote →</a>
+    </div>
+<div class="service-card">
+      <div class="service-title">SAP PM and Maintenance Management</div>
+      <div class="service-desc">
+        SAP PM implementation, training and support: master data, maintenance plans and task lists, roles and profiles. Reliability indicators (MTTR, MTBF, availability) and standardized maintenance processes for mining and industry.
+      </div>
+      <a href="#contacto" class="service-quote" data-servicio="SAP PM and Maintenance Management">Request a quote →</a>
     </div>
 
     </div>
@@ -853,7 +862,7 @@
       “We combine strategic vision with practical execution and real knowledge of the financial industry in LATAM.”
     </blockquote>
     <p class="section-sub">
-      Vértice Consulting brings together three consultants with extensive experience in technology transformation for the financial sector. Trained at firms such as EY, Deloitte, KPMG, IBM and HP, we have led core implementations, platform selections, data governance, PMOs, transformation offices, advanced analytics and applied AI at insurers, banks, pension funds and bancassurance firms across the region.
+      Vértice Consulting brings together four consultants with extensive experience in technology transformation for the financial sector. Trained at firms such as EY, Deloitte, KPMG, IBM and HP, we have led core implementations, platform selections, data governance, PMOs, transformation offices, advanced analytics and applied AI at insurers, banks, pension funds and bancassurance firms across the region.
     </p>
     <div style="margin-top:2rem;">
       <a href="#equipo" class="btn-primary">Meet the team →</a>
@@ -889,7 +898,7 @@
 <section id="equipo">
   <div class="equipo-header">
     <div class="section-label">Our team</div>
-    <h2 class="section-title">Three consultants,<br/><em>one shared</em> vision.</h2>
+    <h2 class="section-title">Four consultants,<br/><em>one shared</em> vision.</h2>
     <p class="section-sub">
       Trained at leading global consulting firms, with extensive experience leading highly complex projects in the LATAM financial sector.
     </p>
@@ -946,6 +955,20 @@
       <div class="equipo-links"><a href="#trayectoria" class="equipo-linkedin" data-tab="diego">View track record →</a><a href="https://www.linkedin.com/in/diego-macaya-silva/" target="_blank" rel="noopener" class="equipo-linkedin">LinkedIn →</a></div>
     </div>
 
+    <div class="equipo-card">
+      <div class="equipo-photo equipo-initials" aria-hidden="true">MC</div>
+      <div class="equipo-name">Martín de Paul Cortés</div>
+      <div class="equipo-role">Mechatronics Engineer · SAP PM Consultant</div>
+      <div class="equipo-bio">
+        15 years of experience in maintenance engineering and SAP PM. Specialist in SAP PM implementation and training, master data standardization and cleansing, reliability indicators (MTTR, MTBF, availability) and maintenance management in large-scale mining in Chile, Peru and Argentina. Integrated management systems auditor (ISO 9001, ISO 14001 and OHSAS 18001).
+      </div>
+      <div class="equipo-firms">
+        <span class="equipo-firm">GMN Group</span>
+        <span class="equipo-firm">Halliburton</span>
+      </div>
+      <div class="equipo-links"><a href="#trayectoria" class="equipo-linkedin" data-tab="martin">View track record →</a></div>
+    </div>
+
   </div>
 </section>
 
@@ -963,6 +986,7 @@
     <button class="tray-tab active" role="tab" id="tab-federico" aria-controls="panel-federico" aria-selected="true" onclick="switchTab('federico', this)">Federico Espil</button>
     <button class="tray-tab" role="tab" id="tab-felipe" aria-controls="panel-felipe" aria-selected="false" onclick="switchTab('felipe', this)">Felipe Bongain</button>
     <button class="tray-tab" role="tab" id="tab-diego" aria-controls="panel-diego" aria-selected="false" onclick="switchTab('diego', this)">Diego Macaya</button>
+    <button class="tray-tab" role="tab" id="tab-martin" aria-controls="panel-martin" aria-selected="false" onclick="switchTab('martin', this)">Martín de Paul Cortés</button>
   </div>
 
   <div class="tray-panel active" id="panel-federico" role="tabpanel" aria-labelledby="tab-federico">
@@ -1162,6 +1186,60 @@
 
   </div>
   </div>
+
+  <div class="tray-panel" id="panel-martin" role="tabpanel" aria-labelledby="tab-martin">
+  <div class="timeline">
+
+    <div class="timeline-block">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Mining · Chile, Peru and Argentina</div>
+      <div class="timeline-role">Senior SAP PM Consultant</div>
+      <div class="timeline-company">GSAP / GMN Group · Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Maintenance execution control – Codelco, Ministro Hales Division</span>
+        <span class="timeline-chip">Reliability indicators (MTTR, MTBF, availability, utilization) and failure analysis</span>
+        <span class="timeline-chip">Work Management – Minera Escondida (BHP): metrics, dashboards and maintenance quality</span>
+        <span class="timeline-chip">SAP PM implementation and training – Glencore: Antapaccay (Peru), Alumbrera (Argentina) and Lomas Bayas (Chile)</span>
+        <span class="timeline-chip">SAP PM master data standardization and cleansing, roles and profiles – Codelco</span>
+        <span class="timeline-chip">Corporate maintenance management KPIs (SOMA) – Codelco</span>
+      </div>
+    </div>
+
+    <div class="timeline-block">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Oil & Gas · Colombia</div>
+      <div class="timeline-role">Field Professional</div>
+      <div class="timeline-company">Halliburton · Colombia</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Oil well field engineer – Halliburton Completion Tools</span>
+        <span class="timeline-chip">Testing, subsea, completion and downhole tool supervision</span>
+      </div>
+    </div>
+
+    <div class="timeline-block">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Mining · Chile</div>
+      <div class="timeline-role">Consultor SAP PM</div>
+      <div class="timeline-company">Asesorías y Consultorías MANV · Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">SAP PM monitoring and training – Codelco, Chuquicamata Division</span>
+        <span class="timeline-chip">Improved catalogs, task lists, maintenance items and plans</span>
+      </div>
+    </div>
+
+    <div class="timeline-block">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Oil & Gas · Colombia</div>
+      <div class="timeline-role">Inspector QA/QC</div>
+      <div class="timeline-company">Topen Oil & Gas Services · Colombia</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Quality control, CPF Ocelote – Palmeras station pipeline</span>
+        <span class="timeline-chip">English/Spanish interpreting during Zap-Lok pipeline assembly</span>
+      </div>
+    </div>
+
+  </div>
+  </div>
 </section>
 
 
@@ -1195,6 +1273,10 @@
         <li class="cred-item">
           <div class="cred-icon" aria-hidden="true"></div>
           <div><strong>Chemical Engineering Technologist</strong> — Universidad de Santiago (F. Bongain)</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon" aria-hidden="true"></div>
+          <div><strong>Electronic Design and Automation Engineer</strong> — Universidad de La Salle, Bogotá (M. de Paul)</div>
         </li>
       </ul>
 
@@ -1231,6 +1313,18 @@
         <li class="cred-item">
           <div class="cred-icon" aria-hidden="true"></div>
           <div>Data Science & Machine Learning — 4Geeks Academy</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon" aria-hidden="true"></div>
+          <div>Academia SAP PM — DUOC UC</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon" aria-hidden="true"></div>
+          <div>Diploma in Fixed Asset Management — Universidad del Norte</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon" aria-hidden="true"></div>
+          <div>Integrated management systems auditor (ISO 9001, ISO 14001, OHSAS 18001) — ICONTEC</div>
         </li>
       </ul>
     </div>
@@ -1326,6 +1420,7 @@
           <option>Digital Transformation</option>
           <option>Platform Selection (RFI/RFP/POC)</option>
           <option>Platform Implementation</option>
+          <option>SAP PM and Maintenance Management</option>
           <option>PMO / Transformation Office</option>
           <option>Process Reengineering</option>
           <option>Data Governance</option>
