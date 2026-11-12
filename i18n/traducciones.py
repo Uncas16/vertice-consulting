@@ -1,5 +1,6 @@
 # es -> (en, pt)
 T = {
+"Más de 20": ("More than 20", "Mais de 20"),
 "Especialistas en Transformación Tecnológica LATAM": ("Technology transformation specialists · LATAM", "Especialistas em transformação tecnológica · América Latina"),
 "Vértice Consulting · Transformación tecnológica LATAM": ("Vértice Consulting · Technology transformation LATAM", "Vértice Consulting · Transformação tecnológica na América Latina"),
 "Consultoría tecnológica · LATAM": ("Technology consulting · LATAM", "Consultoria tecnológica · América Latina"),
@@ -159,9 +160,9 @@ T = {
   "Mais de 20 anos em tecnologia e consultoria. Especialista em TMO, PMO, gestão de programas e transformação digital em seguros, bancos e bancassurance, em oito países da América Latina. Liderou a seleção (RFI, RFP e POC), o GAP Analysis, o desenho e a implantação de sistemas Core de Seguros e plataformas de distribuição, além de escritórios de transformação. Hoje lidera o rollout e a gestão da mudança de SAP SuccessFactors em uma mineradora de lítio."),
 "Ver trayectoria →": ("View track record →", "Ver trajetória →"),
 "Ing. Civil Industrial & Ing. Ejecución Química": ("Industrial Engineer & Chemical Engineering Technologist", "Engenheiro Industrial & Tecnólogo em Engenharia Química"),
-"+20 años en implementación de proyectos TI y buenas prácticas. Especialista en reingeniería de procesos, data governance, protección de datos personales, UX/UC, testing y gestión del cambio. Experiencia en Seguros, Banca, AFPs, TELCO, mutuales y servicios de seguridad.":
- ("20+ years implementing IT projects and best practices. Specialist in process reengineering, data governance, personal data protection, UX/UC, testing and change management. Experience in insurance, banking, pension funds, telecom, mutual associations and security services.",
-  "+20 anos em implantação de projetos de TI e boas práticas. Especialista em reengenharia de processos, data governance, proteção de dados pessoais, UX/UC, testes e gestão da mudança. Experiência em seguros, bancos, fundos de pensão, telecom, mútuas e serviços de segurança."),
+"Más de 20 años en implementación de proyectos TI y buenas prácticas. Especialista en reingeniería de procesos, data governance, protección de datos personales, UX/UC, testing y gestión del cambio. Experiencia en Seguros, Banca, AFPs, TELCO, mutuales y servicios de seguridad.":
+ ("More than 20 years implementing IT projects and best practices. Specialist in process reengineering, data governance, personal data protection, UX/UC, testing and change management. Experience in insurance, banking, pension funds, telecom, mutual associations and security services.",
+  "Mais de 20 anos em implantação de projetos de TI e boas práticas. Especialista em reengenharia de processos, data governance, proteção de dados pessoais, UX/UC, testes e gestão da mudança. Experiência em seguros, bancos, fundos de pensão, telecom, mútuas e serviços de segurança."),
 "Ingeniero Comercial · Data Science": ("Business Engineer · Data Science", "Engenheiro Comercial · Data Science"),
 "Especialista en analítica de datos, IA aplicada y gestión de proyectos de transformación. Experiencia en OdTs, PMOs, optimización de procesos, reportería avanzada (Power BI) y desarrollo de soluciones de IA para el sector financiero y asegurador.":
  ("Specialist in data analytics, applied AI and transformation project management. Experience in transformation offices, PMOs, process optimization, advanced reporting (Power BI) and AI solution development for the financial and insurance sectors.",
