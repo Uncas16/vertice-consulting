@@ -64,6 +64,7 @@ T = {
 'Administración de usuarios en Active Directory y controladores de dominio': ('User administration in Active Directory and domain controllers', 'Administração de usuários no Active Directory e controladores de domínio'),
 'Servidores de almacenamiento con RAID y redundancia de datos; servidor de correo corporativo': ('Storage servers with RAID and data redundancy; corporate mail server', 'Servidores de armazenamento com RAID e redundância de dados; servidor de e-mail corporativo'),
 '2007 – 2017': ('2007 – 2017', '2007 – 2017'),
+'Elegir la plataforma correcta y llevarla hasta el go-live.': ('Choose the right platform and take it through go-live.', 'Escolher a plataforma certa e levá-la até o go-live.'),
 "Diplomado en Ciberseguridad": ("Diploma in Cybersecurity", "Diploma em Cibersegurança"),
 "Preparación CISM (Certified Information Security Manager) — Packt": ("CISM (Certified Information Security Manager) preparation — Packt", "Preparação CISM (Certified Information Security Manager) — Packt"),
 ", desde la estrategia": (", from strategy", ", da estratégia"),
