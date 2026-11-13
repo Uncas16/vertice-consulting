@@ -167,11 +167,24 @@
   .bg-art {
     position: absolute; inset: 0; z-index: -1; pointer-events: none;
     background-color: var(--accent);
-    -webkit-mask: var(--art) center / cover no-repeat; mask: var(--art) center / cover no-repeat;
+    -webkit-mask: var(--art) var(--art-pos, center) / var(--art-size, cover) var(--art-rep, no-repeat);
+    mask: var(--art) var(--art-pos, center) / var(--art-size, cover) var(--art-rep, no-repeat);
   }
-  #hero .bg-art { --art: url("../img/fondo-relieve.svg"); opacity: 0.16; }
-  #contacto .bg-art { --art: url("../img/fondo-relieve-2.svg"); opacity: 0.12; }
-  #resultados .bg-art { --art: url("../img/fondo-red.svg"); background-color: var(--accent-lt); opacity: 0.14; }
+  /* triángulos concéntricos (el "vértice"), anclados junto a las cifras */
+  /* triángulos concéntricos centrados en las cifras: el baricentro coincide con el centro del bloque */
+  #hero { overflow: clip; }
+  .hero-right { position: relative; }
+  #hero .bg-art {
+    --art: url("../img/fondo-triangulos.svg"); --art-size: contain; opacity: 0.13;
+    inset: auto; left: 50%; top: 50%; width: 175%; aspect-ratio: 1 / 0.866;
+    transform: translate(-50%, -66.7%);
+  }
+  #contacto .bg-art { --art: url("../img/fondo-triangulos.svg"); --art-pos: calc(50% - 560px) 105%; --art-size: auto 75%; opacity: 0.08; }
+  #resultados .bg-art { --art: url("../img/fondo-reticula.svg"); --art-pos: center; --art-size: 672px auto; --art-rep: repeat; background-color: var(--accent-lt); opacity: 0.07; }
+  @media (max-width: 900px) {
+    #hero .bg-art { width: 130%; }
+    #contacto .bg-art { --art-pos: 0% 100%; --art-size: 90% auto; }
+  }
   #hero {
     background: var(--paper);
     padding: 12.5rem var(--wrap) 5rem;
@@ -585,7 +598,6 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="bg-art" aria-hidden="true"></div>
   <div class="hero-left">
     <div class="hero-tag">Technology consulting · LATAM</div>
     <h1 class="hero-title">Real <em>transformation</em>, from strategy to go-live.</h1>
@@ -599,6 +611,7 @@
   </div>
 
   <div class="hero-right">
+    <div class="bg-art" aria-hidden="true"></div>
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-num">More than 20</div>
@@ -648,7 +661,7 @@
       <div class="section-label">What we do</div>
       <h2 class="section-title">Four fronts to <em>transform</em> your organization</h2>
     </div>
-    <p class="section-sub">Twelve service lines, grouped by the problem they solve.</p>
+    <p class="section-sub">Fourteen service lines, grouped by the problem they solve.</p>
   </div>
 
   <div class="service-group">
@@ -787,6 +800,31 @@
 
     </div>
   </div>
+
+  <div class="service-group">
+    <div class="service-group-head">
+      <span class="group-num">05</span>
+      <h3>Infrastructure and security</h3>
+      <p>A stable, secure, cloud-ready technology foundation.</p>
+    </div>
+    <div class="services-grid">
+    <div class="service-card">
+      <div class="service-title">IT Infrastructure and Cloud Migration</div>
+      <div class="service-desc">
+        Infrastructure assessment and design, corporate networks and SD-WAN, migration of servers and services to AWS, Azure or GCP, backup and monitoring. Vendor and service desk management.
+      </div>
+      <a href="#contacto" class="service-quote" data-servicio="IT Infrastructure and Cloud Migration">Request a quote →</a>
+    </div>
+<div class="service-card">
+      <div class="service-title">Cybersecurity and Business Continuity</div>
+      <div class="service-desc">
+        Cybersecurity standards and procedures, information security controls, business continuity (BCP) and disaster recovery (DRP) plans, testing and audit support.
+      </div>
+      <a href="#contacto" class="service-quote" data-servicio="Cybersecurity and Business Continuity">Request a quote →</a>
+    </div>
+
+    </div>
+  </div>
 </section>
 
 <!-- RESULTADOS -->
@@ -873,7 +911,7 @@
       “We combine strategic vision with practical execution and real knowledge of LATAM industries.”
     </blockquote>
     <p class="section-sub">
-      Vértice Consulting brings together four consultants with extensive experience in technology transformation. Trained at firms such as EY, Deloitte, KPMG, IBM and HP, we have led core implementations, platform selections, SAP, data governance, PMOs, transformation offices, advanced analytics and applied AI at insurers, banks, pension funds, mining, retail and telecom companies across the region.
+      Vértice Consulting brings together five consultants with extensive experience in technology transformation. Trained at firms such as EY, Deloitte, KPMG, IBM and HP, we have led core implementations, platform selections, SAP, infrastructure and cloud, data governance, PMOs, transformation offices, advanced analytics and applied AI at insurers, banks, pension funds, mining, retail and telecom companies across the region.
     </p>
     <div style="margin-top:2rem;">
       <a href="#equipo" class="btn-primary">Meet the team →</a>
@@ -909,7 +947,7 @@
 <section id="equipo">
   <div class="equipo-header">
     <div class="section-label">Our team</div>
-    <h2 class="section-title">Four consultants,<br/><em>one shared</em> vision.</h2>
+    <h2 class="section-title">Five consultants,<br/><em>one shared</em> vision.</h2>
     <p class="section-sub">
       Trained at leading global consulting firms, with extensive experience leading highly complex projects across LATAM industries.
     </p>
@@ -925,10 +963,10 @@
         Over 20 years in technology and consulting. Specialist in TMO, PMO, program management and digital transformation in insurance, banking and bancassurance across eight LATAM countries. Has led the selection (RFI, RFP and POC), GAP analysis, design and implementation of insurance core systems and distribution platforms, as well as transformation offices. Currently leads the SAP SuccessFactors rollout and change management at a lithium mining company.
       </div>
       <div class="equipo-firms">
-        <span class="equipo-firm">EY</span>
-        <span class="equipo-firm">Deloitte</span>
-        <span class="equipo-firm">HP</span>
         <span class="equipo-firm">EDS</span>
+        <span class="equipo-firm">HP</span>
+        <span class="equipo-firm">Deloitte</span>
+        <span class="equipo-firm">EY</span>
         <span class="equipo-firm">Kopernicus Tech</span>
       </div>
       <div class="equipo-links"><a href="#trayectoria" class="equipo-linkedin" data-tab="federico">View track record →</a><a href="https://www.linkedin.com/in/federicoespil/" target="_blank" rel="noopener" class="equipo-linkedin">LinkedIn →</a></div>
@@ -980,6 +1018,21 @@
       <div class="equipo-links"><a href="#trayectoria" class="equipo-linkedin" data-tab="martin">View track record →</a><a href="https://www.linkedin.com/in/martin-de-paul-cortes-alonso-108b8482/" target="_blank" rel="noopener" class="equipo-linkedin">LinkedIn →</a></div>
     </div>
 
+    <div class="equipo-card">
+      <img class="equipo-photo" src="../img/luis-lopez.jpg" alt="Luis López Segarra" width="96" height="96" loading="lazy"/>
+      <div class="equipo-name">Luis López Segarra</div>
+      <div class="equipo-role">BSc in Computer Science · Infrastructure and Cybersecurity</div>
+      <div class="equipo-bio">
+        Specialist in IT infrastructure and operations for multinational companies. Leads infrastructure for 250 stores and offices across LATAM: SD-WAN networks, server migration to AWS, backup and monitoring, business continuity (BCP/DRP) and cybersecurity standards. Postgraduate degree in Cybersecurity (UAI).
+      </div>
+      <div class="equipo-firms">
+        <span class="equipo-firm">Amplifon</span>
+        <span class="equipo-firm">Compass Group</span>
+        <span class="equipo-firm">Rosen</span>
+      </div>
+      <div class="equipo-links"><a href="#trayectoria" class="equipo-linkedin" data-tab="luis">View track record →</a><a href="https://www.linkedin.com/in/segarraluis/" target="_blank" rel="noopener" class="equipo-linkedin">LinkedIn →</a></div>
+    </div>
+
   </div>
 </section>
 
@@ -998,6 +1051,7 @@
     <button class="tray-tab" role="tab" id="tab-felipe" aria-controls="panel-felipe" aria-selected="false" onclick="switchTab('felipe', this)">Felipe Bongain</button>
     <button class="tray-tab" role="tab" id="tab-diego" aria-controls="panel-diego" aria-selected="false" onclick="switchTab('diego', this)">Diego Macaya</button>
     <button class="tray-tab" role="tab" id="tab-martin" aria-controls="panel-martin" aria-selected="false" onclick="switchTab('martin', this)">Martín de Paul Cortés</button>
+    <button class="tray-tab" role="tab" id="tab-luis" aria-controls="panel-luis" aria-selected="false" onclick="switchTab('luis', this)">Luis López Segarra</button>
   </div>
 
   <div class="tray-panel active" id="panel-federico" role="tabpanel" aria-labelledby="tab-federico">
@@ -1251,6 +1305,51 @@
 
   </div>
   </div>
+
+  <div class="tray-panel" id="panel-luis" role="tabpanel" aria-labelledby="tab-luis">
+  <div class="timeline">
+
+    <div class="timeline-block">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2023 – Present</div>
+      <div class="timeline-role">IT Infrastructure and Operations Lead, LATAM</div>
+      <div class="timeline-company">Amplifon · Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Corporate network of 250 stores and offices across LATAM on Cisco Meraki: topologies, VLANs, SD-WAN, firewall and monitoring</span>
+        <span class="timeline-chip">Infrastructure oversight for the migration of servers and services to AWS</span>
+        <span class="timeline-chip">Coordination of the LATAM service desk with 4 outsourced support providers</span>
+        <span class="timeline-chip">Business continuity plans (BCP/DRP), testing and audits; cybersecurity standards and procedures</span>
+        <span class="timeline-chip">AI integration and process automation projects</span>
+      </div>
+    </div>
+
+    <div class="timeline-block">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2022 – 2023</div>
+      <div class="timeline-role">IT Infrastructure and Platform Administrator</div>
+      <div class="timeline-company">Compass Group · Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">VxRail hyperconverged platform with more than 150 virtual servers</span>
+        <span class="timeline-chip">Servers and web services on Azure and GCP; Microsoft 365, SharePoint and Teams</span>
+        <span class="timeline-chip">Information security controls, regional audits and regulatory requirements</span>
+        <span class="timeline-chip">International MPLS links and Fortinet perimeter firewalls</span>
+      </div>
+    </div>
+
+    <div class="timeline-block">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2020 – 2022</div>
+      <div class="timeline-role">IT Infrastructure and Support Specialist</div>
+      <div class="timeline-company">Colchones Rosen · Chile</div>
+      <div class="timeline-highlights">
+        <span class="timeline-chip">Active Directory with more than 2,000 accounts, Google Workspace and Microsoft 365</span>
+        <span class="timeline-chip">On-premise and cloud servers (AWS and Azure), SAP Business One and point of sale</span>
+        <span class="timeline-chip">Support for more than 20 stores, 3 foreign subsidiaries and call centers</span>
+      </div>
+    </div>
+
+  </div>
+  </div>
 </section>
 
 
@@ -1288,6 +1387,14 @@
         <li class="cred-item">
           <div class="cred-icon" aria-hidden="true"></div>
           <div><strong>Electronic Design and Automation Engineer</strong> — Universidad de La Salle, Bogotá (M. de Paul)</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon" aria-hidden="true"></div>
+          <div><strong>Postgraduate degree in Cybersecurity</strong> — Universidad Adolfo Ibáñez (L. López)</div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon" aria-hidden="true"></div>
+          <div><strong>BSc in Computer Science</strong> — Universidad de La Habana (L. López)</div>
         </li>
       </ul>
 
@@ -1344,8 +1451,7 @@
       <div class="cred-column-title">Industries</div>
       <ul class="industries-list">
         <li>Insurance</li>
-        <li>Banking</li>
-        <li>Bancassurance</li>
+        <li>Banking / Bancassurance</li>
         <li>Pension funds</li>
         <li>Technology / IT</li>
         <li>Telecommunications</li>
@@ -1358,6 +1464,8 @@
         <li>Security services</li>
         <li>Transaction services</li>
         <li>Retail finance</li>
+        <li>Retail</li>
+        <li>Healthcare</li>
       </ul>
 
     </div>
@@ -1394,7 +1502,7 @@
         <div class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V4h8v3M3 12h18"/></svg></div>
         <div>
           <div class="contact-item-label">LinkedIn</div>
-          <div class="contact-item-val"><a href="https://www.linkedin.com/in/federicoespil/" target="_blank">Federico Espil</a> · <a href="https://www.linkedin.com/in/felipe-bongain-755a228" target="_blank">Felipe Bongain</a> · <a href="https://www.linkedin.com/in/diego-macaya-silva/" target="_blank">Diego Macaya</a> · <a href="https://www.linkedin.com/in/martin-de-paul-cortes-alonso-108b8482/" target="_blank">Martín de Paul</a></div>
+          <div class="contact-item-val"><a href="https://www.linkedin.com/in/federicoespil/" target="_blank">Federico Espil</a> · <a href="https://www.linkedin.com/in/felipe-bongain-755a228" target="_blank">Felipe Bongain</a> · <a href="https://www.linkedin.com/in/diego-macaya-silva/" target="_blank">Diego Macaya</a> · <a href="https://www.linkedin.com/in/martin-de-paul-cortes-alonso-108b8482/" target="_blank">Martín de Paul</a> · <a href="https://www.linkedin.com/in/segarraluis/" target="_blank">Luis López</a></div>
         </div>
       </div>
       <div class="contact-item">
@@ -1440,6 +1548,8 @@
           <option>Analytics, AI & Reporting</option>
           <option>Training & Education</option>
           <option>Advisory for training providers (OTEC)</option>
+          <option>IT Infrastructure and Cloud Migration</option>
+          <option>Cybersecurity and Business Continuity</option>
           <option>Not sure yet</option>
         </select>
       </div>
