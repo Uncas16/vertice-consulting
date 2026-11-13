@@ -155,6 +155,20 @@
     padding: 0.7rem 1.2rem; border-radius: 2px;
   }
   .nav-cta:hover { background: var(--accent-fill); }
+  /* mismo ancho en ES/EN/PT: el menú y los botones no cambian de lugar al cambiar de idioma */
+  @media (min-width: 769px) {
+    .nav-links li { text-align: center; }
+    .nav-links li:nth-child(1) { width: 2.75rem; }
+    .nav-links li:nth-child(2) { width: 4rem; }
+    .nav-links li:nth-child(3) { width: 4.4rem; }
+    .nav-links li:nth-child(4) { width: 3.1rem; }
+    .nav-links li:nth-child(5) { width: 5.4rem; }
+    .nav-links li:nth-child(6) { width: 8.25rem; }
+    .nav-links .nav-cta { display: block; }
+    .btn-primary, .btn-outline { justify-content: center; }
+    .btn-primary { min-width: 18.75rem; }
+    .btn-outline { min-width: 9.75rem; }
+  }
   .nav-hamburger {
     display: none; flex-direction: column; gap: 5px;
     background: none; border: none; cursor: pointer; padding: 10px;
