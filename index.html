@@ -166,11 +166,17 @@
   .bg-art {
     position: absolute; inset: 0; z-index: -1; pointer-events: none;
     background-color: var(--accent);
-    -webkit-mask: var(--art) center / cover no-repeat; mask: var(--art) center / cover no-repeat;
+    -webkit-mask: var(--art) var(--art-pos, center) / var(--art-size, cover) var(--art-rep, no-repeat);
+    mask: var(--art) var(--art-pos, center) / var(--art-size, cover) var(--art-rep, no-repeat);
   }
-  #hero .bg-art { --art: url("img/fondo-relieve.svg"); opacity: 0.16; }
-  #contacto .bg-art { --art: url("img/fondo-relieve-2.svg"); opacity: 0.12; }
-  #resultados .bg-art { --art: url("img/fondo-red.svg"); background-color: var(--accent-lt); opacity: 0.14; }
+  /* triángulos concéntricos (el "vértice"), anclados junto a las cifras */
+  #hero .bg-art { --art: url("img/fondo-triangulos.svg"); --art-pos: calc(50% + 430px) 58%; --art-size: auto 118%; opacity: 0.13; }
+  #contacto .bg-art { --art: url("img/fondo-triangulos.svg"); --art-pos: calc(50% - 560px) 105%; --art-size: auto 75%; opacity: 0.08; }
+  #resultados .bg-art { --art: url("img/fondo-reticula.svg"); --art-pos: center; --art-size: 672px auto; --art-rep: repeat; background-color: var(--accent-lt); opacity: 0.07; }
+  @media (max-width: 900px) {
+    #hero .bg-art { --art-pos: 50% 100%; --art-size: 120% auto; }
+    #contacto .bg-art { --art-pos: 0% 100%; --art-size: 90% auto; }
+  }
   #hero {
     background: var(--paper);
     padding: 12.5rem var(--wrap) 5rem;
