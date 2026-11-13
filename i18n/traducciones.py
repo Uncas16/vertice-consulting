@@ -44,6 +44,7 @@ T = {
 'Infraestructura y seguridad': ('Infrastructure and security', 'Infraestrutura e segurança'),
 'Una base tecnológica estable, segura y preparada para la nube.': ('A stable, secure, cloud-ready technology foundation.', 'Uma base tecnológica estável, segura e preparada para a nuvem.'),
 'Catorce líneas de servicio, agrupadas según el problema que resuelven.': ('Fourteen service lines, grouped by the problem they solve.', 'Catorze linhas de serviço, agrupadas pelo problema que resolvem.'),
+"Banca / Bancaseguros": ("Banking / Bancassurance", "Bancos / Bancassurance"),
 "Más de 20": ("More than 20", "Mais de 20"),
 "Especialistas en Transformación Tecnológica LATAM": ("Technology transformation specialists · LATAM", "Especialistas em transformação tecnológica · América Latina"),
 "Vértice Consulting · Transformación tecnológica LATAM": ("Vértice Consulting · Technology transformation LATAM", "Vértice Consulting · Transformação tecnológica na América Latina"),
