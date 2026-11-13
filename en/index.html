@@ -234,6 +234,8 @@
   }
   .hero-title em { font-style: italic; color: var(--accent); }
   .hero-sub { font-size: 1.15rem; color: var(--body2); max-width: 36rem; }
+  /* misma altura en ES/EN/PT para que las cifras y el triángulo no cambien de lugar */
+  @media (min-width: 901px) { .hero-sub { min-height: calc(1.15rem * 1.6 * 4); } }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center; padding-top: 0.5rem; }
 
   .btn-primary {
@@ -260,7 +262,7 @@
   .hero-stat { padding: 1.4rem 1rem 1.4rem 0; border-bottom: 1px solid var(--line); }
   .hero-stat:nth-child(even) { padding-left: 1.25rem; border-left: 1px solid var(--line); }
   .hero-stat:nth-child(n+3) { border-bottom: none; }
-  .hero-stat-num { font-family: var(--serif); font-size: 2.75rem; line-height: 1; margin-bottom: 0.4rem; font-variant-numeric: tabular-nums; }
+  .hero-stat-num { white-space: nowrap; font-family: var(--serif); font-size: 2.75rem; line-height: 1; margin-bottom: 0.4rem; font-variant-numeric: tabular-nums; }
   .hero-stat-label { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
 
   .hero-countries { text-wrap: balance; margin-top: 1.1rem; font-size: 0.82rem; color: var(--muted); letter-spacing: 0.02em; }
@@ -631,7 +633,7 @@
 <section id="hero">
   <div class="hero-left">
     <div class="hero-tag">Technology consulting · LATAM</div>
-    <h1 class="hero-title">Real <em>transformation</em>, from strategy to go-live.</h1>
+    <h1 class="hero-title">Real <em>transformation</em>, from strategy<br/>to go-live.</h1>
     <p class="hero-sub">
       We support companies in financial services, mining, retail, telecom and other industries across LATAM in selecting and implementing platforms, data governance and change program management. No contracts with software vendors.
     </p>
@@ -645,7 +647,7 @@
     <div class="bg-art" aria-hidden="true"></div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num">More than 20</div>
+        <div class="hero-stat-num">Over 20</div>
         <div class="hero-stat-label">years of experience in technology and consulting</div>
       </div>
       <div class="hero-stat">
