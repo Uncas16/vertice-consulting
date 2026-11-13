@@ -171,11 +171,18 @@
     mask: var(--art) var(--art-pos, center) / var(--art-size, cover) var(--art-rep, no-repeat);
   }
   /* triángulos concéntricos (el "vértice"), anclados junto a las cifras */
-  #hero .bg-art { --art: url("../img/fondo-triangulos.svg"); --art-pos: calc(50% + 430px) 58%; --art-size: auto 118%; opacity: 0.13; }
+  /* triángulos concéntricos centrados en las cifras: el baricentro coincide con el centro del bloque */
+  #hero { overflow: clip; }
+  .hero-right { position: relative; }
+  #hero .bg-art {
+    --art: url("../img/fondo-triangulos.svg"); --art-size: contain; opacity: 0.13;
+    inset: auto; left: 50%; top: 50%; width: 175%; aspect-ratio: 1 / 0.866;
+    transform: translate(-50%, -66.7%);
+  }
   #contacto .bg-art { --art: url("../img/fondo-triangulos.svg"); --art-pos: calc(50% - 560px) 105%; --art-size: auto 75%; opacity: 0.08; }
   #resultados .bg-art { --art: url("../img/fondo-reticula.svg"); --art-pos: center; --art-size: 672px auto; --art-rep: repeat; background-color: var(--accent-lt); opacity: 0.07; }
   @media (max-width: 900px) {
-    #hero .bg-art { --art-pos: 50% 100%; --art-size: 120% auto; }
+    #hero .bg-art { width: 130%; }
     #contacto .bg-art { --art-pos: 0% 100%; --art-size: 90% auto; }
   }
   #hero {
@@ -591,7 +598,6 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="bg-art" aria-hidden="true"></div>
   <div class="hero-left">
     <div class="hero-tag">Consultoria tecnológica · América Latina</div>
     <h1 class="hero-title">Transformação <em>real</em>, da estratégia ao go-live.</h1>
@@ -605,6 +611,7 @@
   </div>
 
   <div class="hero-right">
+    <div class="bg-art" aria-hidden="true"></div>
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-num">Mais de 20</div>
