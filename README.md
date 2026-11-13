@@ -1,52 +1,42 @@
 # Vértice Consulting
 
-**Transformación Tecnológica del Sector Financiero LATAM**
+**Transformación Tecnológica LATAM**
 
-Sitio web de Vértice Consulting, consultora especializada en transformación digital, implementación de plataformas Core, gobierno de datos y gestión de proyectos para el sector financiero en Latinoamérica.
+Sitio web de Vértice Consulting, consultora tecnológica independiente: estrategia y transformación, plataformas core y SAP, gobierno de programas, datos e IA, infraestructura y seguridad.
 
-## 🌐 Sitio en vivo
+## Sitio en vivo
 
-[https://uncas16.github.io/vertice-consulting/](https://uncas16.github.io/vertice-consulting/)
+[https://uncas16.github.io/vertice-consulting/](https://uncas16.github.io/vertice-consulting/) — en español, inglés (`/en/`) y portugués (`/pt/`), con modo claro y oscuro.
 
-## 🛠️ Tecnologías
+## Páginas
 
-- HTML5 / CSS3 / JavaScript vanilla
-- Google Fonts (Fraunces, DM Sans)
-- Google Apps Script (formulario → Google Sheets + email)
-- GitHub Pages (hosting)
+- **Inicio** (`index.html`): propuesta de valor, cifras, clientes, resumen de los 5 frentes y resultados.
+- **Servicios** (`servicios.html`): las 14 líneas de servicio y cómo trabajamos.
+- **Nosotros** (`nosotros.html`): quiénes somos, misión, visión y valores, equipo, trayectoria y credenciales.
+- **Contacto** (`contacto.html`): formulario (Google Apps Script → Google Sheets + email). Los botones "Cotizar" llegan con el servicio preseleccionado (`contacto.html?servicio=...`).
 
-## 📋 Secciones
+## Cómo editar
 
-- **Hero** — Propuesta de valor y estadísticas clave
-- **Nosotros** — Propuesta de valor y pilares de la consultora
-- **Equipo** — Federico Espil, Felipe Bongain y Diego Macaya
-- **Trayectoria** — Timeline de experiencia por consultor (tabs interactivos)
-- **Servicios** — 10 líneas de servicio (Estrategia, Transformación Digital, Selección e Implementación de Plataformas, PMO/OdT, Reingeniería de Procesos, Data Governance, Protección de Datos, Analítica/IA, Capacitación)
-- **Credenciales** — Formación académica, certificaciones, industrias y competencias
-- **Contacto** — Formulario funcional con integración a Google Sheets
+Todo el contenido vive en **una sola fuente**: `_fuente/sitio.html` (español). Las páginas publicadas se generan:
 
-## 📬 Formulario de contacto
+```
+python3 i18n/construir.py
+```
 
-El formulario envía los datos a un Google Apps Script que:
-1. Guarda cada mensaje en un Google Sheet (Vértice Consulting - Leads)
-2. Envía una notificación por email con los datos del lead
+1. Editar el texto en `_fuente/sitio.html`.
+2. Si es un texto nuevo o cambiado, agregar su traducción en `i18n/traducciones.py` (`"español": ("inglés", "portugués")`).
+3. Ejecutar el script: regenera `index.html`, `servicios.html`, `nosotros.html`, `contacto.html` y sus copias en `en/` y `pt/`. Al final indica si quedó algún texto sin traducir.
 
-## 📁 Estructura
+Qué sección va en qué página se define en `PAGES`, y los títulos y descripciones de cada página en `META`, ambos al inicio de `i18n/construir.py`. No editar a mano los `.html` generados.
+
+## Estructura
 
 ```
 vertice-consulting/
-├── index.html    ← Sitio completo (single-file)
-└── README.md
+├── _fuente/sitio.html   ← fuente única (no se publica)
+├── i18n/construir.py    ← genera las páginas
+├── i18n/traducciones.py ← tabla español → inglés, portugués
+├── index.html, servicios.html, nosotros.html, contacto.html  (generados)
+├── en/, pt/             (generados)
+└── img/                 ← fotos del equipo y fondos
 ```
-
-## 🚀 Deploy
-
-El sitio se despliega automáticamente con GitHub Pages desde la rama `main`. Para actualizar:
-
-1. Editar `index.html` en GitHub (ícono del lápiz)
-2. Commit changes
-3. Esperar 1-2 minutos para que se actualice
-
----
-
-© 2026 Vértice Consulting · Santiago, Chile
