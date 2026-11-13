@@ -99,7 +99,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; scroll-padding-top: 124px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 124px; scrollbar-gutter: stable; }
   body {
     font-family: var(--sans); font-weight: 400; font-size: 16px; line-height: 1.6;
     color: var(--ink); background: var(--paper); overflow-x: hidden;
@@ -618,6 +618,7 @@
 <nav id="nav">
   <a href="#hero" class="nav-logo" aria-label="Vértice Consulting, home"><svg width="28" height="24" viewBox="0 0 30 26" aria-hidden="true"><path d="M15 2 L28 24 H2 Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="15" cy="2.6" r="2.6" fill="#0F5E52"/></svg>Vértice <span>Consulting</span></a>
   <ul class="nav-links" id="nav-links">
+    <li><a href="#hero" aria-current="page">Home</a></li>
     <li><a href="servicios.html">Services</a></li>
     <li><a href="nosotros.html">About</a></li>
     <li><a href="nosotros.html#equipo">Team</a></li>
@@ -746,6 +747,7 @@
     <div class="footer-tagline">Technology transformation specialists · LATAM</div>
   </div>
   <div class="footer-links">
+    <a href="#hero">Home</a>
     <a href="servicios.html">Services</a>
     <a href="nosotros.html">About</a>
     <a href="nosotros.html#equipo">Team</a>
